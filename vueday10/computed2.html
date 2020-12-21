@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model='myText'>
+        <ul>
+            <li v-for="(items,idx) in getMyItems" :key="idx">
+                {{items}}
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data(){
+                return{
+                    myText:'',
+                    dataList:['aaa','bbbb','cccc','dddd','eeee','eescs','ascx','sfsvxb']
+                }
+            },
+            computed:{
+                getMyItems(){
+                    return this.dataList.filter(items=>items.indexOf(this.myText)>-1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

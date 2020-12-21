@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        Computed-Attribute:{{getMyname}}
+        <br>
+    <input type="text" v-model="msg"/>
+
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+    <script type="text/javascript">
+        let vm = new Vue({
+            el:'#app',
+            data(){
+                return{
+                    msg:'terrance',
+                }
+            },
+            computed:{
+                getMyname(){
+                    return this.msg.substring(0,1).toUpperCase() + this.msg.substring(1).toLowerCase()
+                }// 用到的状态改变了,计算属性会重新计算一遍
+            }
+        })
+    </script>
+</body>
+</html>
