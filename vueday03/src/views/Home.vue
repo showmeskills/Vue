@@ -2,7 +2,6 @@
   <div class="home">
     <div class="contain"  @mouseover="stop" @mouseleave="restart">
         <div class="wrap">
-
             <img :src=List[currentIndex] alt="">
         </div>
       <div class="btn">
@@ -85,7 +84,7 @@ export default {
   position:relative;
   }
 .wrap{
-  width:640px;
+  width:3200px;
   height:350px;
   position: absolute;
   top: 0;
