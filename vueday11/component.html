@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <grandcomponent></grandcomponent>
+        <fathercomponent></fathercomponent>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+        Vue.component('grandcomponent',{
+            template: `
+                <div style="background-color:red;">
+                    I am the global component
+                    <button @click=handleClick()>click me</button>
+                    <fathercomponent></fathercomponent>
+                </div>
+            `,
+            methods:{
+                handleClick(){
+                    alert('I am the global component')
+                }
+            }
+        })
+
+        Vue.component('fathercomponent',{
+            template: `
+                <div style="background-color:red;">
+                    I am the global father component,and I'm in both root component and grandcomponent 
+                    <button @click=handleClick()>click me</button>
+                    <soncomponent></soncomponent>
+                </div>
+            `,
+            methods:{
+                handleClick(){
+                    alert('I am the global father component')
+                }
+            },
+            components:{
+                soncomponent:{
+                    template:`
+                    <div style="background-color:yellow;">
+                            I am the local son component, and belongs to fathercomponent only
+                        <button @click=handleClick()>click me</button>
+                    </div>
+                    `,
+                    methods:{
+                        handleClick(){
+                            alert('I am the local son component')
+                        }
+                    }
+                }
+            }
+        })
+
+
+        new Vue({
+            el: '#app',
+        })
+
+    </script>
+</body>
+</html>
