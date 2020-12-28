@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <child :myname='display' :myshow='isShow'></child>
+        <child :myname='display' :myshow='unShown'></child>
+        <child :myname='parent' :myshow='unShown'></child>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('child',{
+            template:
+            `
+            <div>
+                <button>back</button>
+                this is child components -{{myname}}
+                <button v-show='myshow'>home page</button>
+            </div>
+            `,
+            props:{
+                myname:String,
+                myshow:Boolean,
+            }
+        })
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    parent:'this is the father information',
+                    display:'I am controlled by father',
+                    isShow:true,
+                    unShown:false
+                }
+            }
+        })
+    </script>
+</body>
+</html>

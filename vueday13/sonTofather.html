@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <child @myevent='handleChange(arguments)'></child>
+        {{msg}}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('child',{
+            template:
+            `
+                <div>
+                    <button @click="handleClick">Child-click</button>
+                </div>
+            `,
+            data(){
+                return{
+                    child:'I am a child component',
+                    child2:'child is me'
+                }
+            },
+            methods:{
+                handleClick(){
+                    let {child,child2} = this
+                    this.$emit('myevent',child,child2)
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    msg:null
+                }
+            },
+            methods: {
+                handleChange(e){
+                    this.msg = `I recieve the information '${e[0]}','${e[1]}' from child component`;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

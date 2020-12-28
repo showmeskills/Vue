@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <navbar @myevent='handleChange'></navbar>
+        <siderbar v-show='isShow'></siderbar>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('navbar',{
+            template:
+            `
+                <div>
+                    <button @click = 'handleClick()'>NabarClick</button>
+                </div>
+            `,
+            methods:{
+                handleClick(){
+                    this.$emit('myevent')
+                },
+            }
+        })
+        Vue.component('siderbar',{
+            template:
+            `
+                <div style="background:yellow; width:500px">
+                    <ul>
+                        <li>I want to sub-component1</li>
+                        <li>I want to sub-component2</li>
+                        <li>I want to sub-component3</li>
+                        <li>I want to sub-component4</li>
+                    </ul>
+                </div>
+            `
+        })
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    isShow:false,
+                }
+            },
+            methods: {
+                handleChange(e){
+                    this.isShow = !this.isShow
+                }
+            }
+        })
+    </script>
+</body>
+</html>
