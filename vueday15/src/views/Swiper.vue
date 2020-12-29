@@ -3,7 +3,13 @@
        <div class="swiper-wrapper">
            <slot></slot>
        </div>
-       <div class="swiper-pagination"></div>
+       <div class="swiper-pagination">
+         <div class="swiper-pagination-bullet active"></div>
+       </div>
+       <!-- 如果需要导航按钮 --> 
+      <div class="swiper-button-prev"></div> <div class="swiper-button-next"></div> 
+      <!-- 如果需要滚动条 --> 
+      <div class="swiper-scrollbar"></div>
     </div>
 </template>
 
@@ -11,11 +17,14 @@
 //1.下载npm i -S swiper
 //2.引入
 import Swiper from 'swiper'//js
-import 'swiper/swiper.less'
+import 'swiper/swiper.less';
+// import 'swiper/components/navigation/navigation.less';
+import 'swiper/components/pagination/pagination.min.css';
+// import 'swiper/components/scrollbar/scrollbar.less';
 
 export default {
-  mounted(){
-  Swiper = new Swiper('.swiper-container', {
+  updated(){
+    new Swiper('.swiper-container', {
     notNextTick: true,
     //设定初始化时slide的索引
     initialSlide: 0,
@@ -38,5 +47,13 @@ export default {
 </script>
 
 <style scoped>
-
+.swiper-container {
+  padding: 0 0 20px 0;
+}
+.swiper-pagination {
+  margin-left: -12px;
+}
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 0px;
+}
 </style>
