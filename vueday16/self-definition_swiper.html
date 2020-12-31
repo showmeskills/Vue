@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/css/swiper.css">
+    <title>Document</title>
+    <style>
+        .swiper-container{
+            width:600px;
+            height:300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <swiper :key='datalist.length'>
+            <div class="swiper-slide" v-for='data in datalist'>
+                {{data}}
+            </div>
+        </swiper>
+    </div>
+
+    <script src="dist/js/swiper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('swiper',{
+            template:
+            `
+            <div class="swiper-container a">
+            <div class="swiper-wrapper">
+                <slot></slot>
+            </div>
+            <!-- 如果需要分页的话 -->
+            <div class="swiper-pagination"></div>
+             <!-- 如果需要导航按钮 --> 
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> 
+            <!-- 如果需要滚动条 --> 
+            <div class="swiper-scrollbar"></div>
+        </div>
+            `,
+            //如果放在update里面会出现刷新一次页面;就会new一个swiper;频繁操作我导致问题
+            //思路需要把原先的swiper;在mounted生命周期中更新从而建立一个新的swiper;动态key值得判断因为当初始化的时候datalist.length是0 所以会删除并且复用
+            mounted(){
+                new Swiper('.a',{
+                        autoplay: {
+                            delay: 1000,//自动切换时间设置
+                            stopOnLastSlide: false,//当自动切换到最后一张时是否停止自动切换
+                            disableOnInteraction: true,//用户触摸时是否停止自动切换
+                        },
+                        loop:true,
+                        //如果需要分页的话
+                        pagination:{
+                            el:'.swiper-pagination'
+                        }
+                    })
+            }
+        });
+
+        new Vue({
+            el:'#app',
+            data(){
+                return {
+                    datalist:[]
+                }
+            },
+            mounted(){
+                setTimeout(()=>{
+                    this.datalist = ['1111','2222','3333']
+                },2000)
+            }
+        })
+    </script>
+</body>
+</html>

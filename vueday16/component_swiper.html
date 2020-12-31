@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/css/swiper.css">
+    <title>Document</title>
+    <style>
+        .swiper-container{
+            width:600px;
+            height:300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="swiper-container a">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for='data in datalist'>
+                    {{data}}
+                </div>
+            </div>
+            <!-- 如果需要分页的话 -->
+            <div class="swiper-pagination"></div>
+             <!-- 如果需要导航按钮 --> 
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> 
+            <!-- 如果需要滚动条 --> 
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </div>
+    <script src="dist/js/swiper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                datalist:[]
+            },
+            //mounted 中放入异步函数;
+            mounted(){
+                setTimeout(()=>{
+                    this.datalist = ['1111','2222','33333'];//状态改为,异步更新DOM
+                       //swiper 放在mounted生命周期里面初始话过早问题
+                       console.log(document.querySelectorAll('.swiper-slide').length)
+                },2000)
+            },
+            //为了更好的复用,可以自定义一个swiper组件;并且尽量不要把new Swiper放在updated生命周期中
+            updated(){
+                    //需要明白什么时候vue插入DOM节点(初始过早)
+                    //swiper 需要在DOM节点创建后初始化(需要等完数据请求)
+                    new Swiper('.a',{
+                        autoplay: {
+                            delay: 50,//自动切换时间设置
+                            stopOnLastSlide: false,//当自动切换到最后一张时是否停止自动切换
+                            disableOnInteraction: true,//用户触摸时是否停止自动切换
+                        },
+                        loop:true,
+                        //如果需要分页的话
+                        pagination:{
+                            el:'.swiper-pagination'
+                        }
+                    })
+            
+            }
+        })
+    </script>
+</body>
+</html>
