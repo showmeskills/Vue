@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-show='isShow'>动态显示和隐藏</div>
+        <div v-if='isCreated'>动态创建和删除</div>
+        <button @click="handleClick">click</button>
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            data(){
+                return{
+                    isShow: true,
+                    isCreated: true,
+                }
+            },
+            methods: {
+                handleClick(){
+                    this.isShow = !this.isShow;
+                    this.isCreated = !this.isCreated;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
