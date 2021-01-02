@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            width:100%;
+            position: absolute;
+            list-style-type: none;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        .nav li{
+            width:100%;
+            height:50px;
+            border:1px solid red;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <keep-alive>
+            <component :is='who'></component>
+        </keep-alive>
+        <ul class="nav">
+            <li @click="handleClick(idx)" v-for="(items,idx) in btnList" :key="idx">
+                {{items}}
+            </li>
+        </ul>
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    who:'home',
+                    btnList:['home','products','shop-cart']
+                }
+            },
+            components:{
+                'home':
+                {
+                template:
+                `<div style="background-color:pink; width:500px; height:500px">
+                    <h1>Home Page</h1>
+                    <input type="text" placeholder="enter any information"/>
+                </div>`
+                },
+
+                'products':
+                {
+                template:
+                `<div style="background-color:green; width:500px; height:500px">
+                    <h1>Products Page</h1>
+                    <input type="text" placeholder="enter any information"/>
+                </div>`
+                },
+
+                'shopCart':
+                {
+                template:
+                `<div style="background-color:orange; width:500px; height:500px">
+                    <h1>Shop-cart Page</h1>
+                    <input type="text" placeholder="enter any information"/>
+                </div>`
+                }
+            },
+            methods:{
+                handleClick(idx){
+                   this.who = this.btnList[idx];
+                }
+            }
+        })
+    </script>
+</body>
+</html>
