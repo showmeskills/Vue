@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <releaser></releaser>
+        <subscriber></subscriber>
+        <subscriber1></subscriber1>
+        <subscriber2></subscriber2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let bus = new Vue();
+        
+        Vue.component('releaser',{
+            template: 
+            `
+            <div style="background-color:red;">
+                <h1>I am a releaser</h1>
+                <input v-model="msg" type='text' placeholder="the content of releasing" style="height:50px"/>
+                <button @click="release">release</button>
+            </div>
+            `,
+            data(){
+                return{
+                    msg:null
+                }
+            },
+            methods:{
+                release(){
+                    bus.$emit('to-news',this.msg);
+                }
+            }
+        })
+        
+        Vue.component('subscriber',{
+            template:
+            `
+            <div style="background-color:yellow">
+                <h1> I am a subscriber</h1>
+                <div>{{msg}}</div>
+            </div>
+            `,
+            data(){
+                return{
+                    msg:null
+                }
+            },
+            mounted(){
+                bus.$on('to-news',data=>{
+                    this.msg = data;
+                })
+            }
+        })
+
+        Vue.component('subscriber1',{
+            template:
+            `
+            <div style="background-color:green">
+                <h1> I am a subscriber</h1>
+                <div>{{msg}}</div>
+            </div>
+            `,
+            data(){
+                return{
+                    msg:null
+                }
+            },
+            mounted(){
+                bus.$on('to-news',data=>{
+                    this.msg = data;
+                })
+            }
+        })
+        Vue.component('subscriber2',{
+            template:
+            `
+            <div style="background-color:pink">
+                <h1> I am a subscriber</h1>
+                <div>{{msg}}</div>
+            </div>
+            `,
+            data(){
+                return{
+                    msg:null
+                }
+            },
+            mounted(){
+                bus.$on('to-news',data=>{
+                    this.msg = data;
+                })
+            }
+        })
+
+        new Vue({
+            el: '#app',
+        })
+    </script>
+</body>
+</html>
