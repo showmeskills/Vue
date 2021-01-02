@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" ref='mytext'/>
+        <button @click='handleClick'>Father_Btn</button>
+        <h1 v-html='msg'></h1>
+        <child ref='mychild'></child>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('child',{
+            template: 
+            `
+            <div style='margin:50px auto; background-color:yellow;width:500px;height:500px'>
+                <h1>child component</h1>
+                <div>{{childname}} and {{msg}}</div>
+                <button @click="add">add</button>
+                {{count}}
+            </div>
+            `,
+            data(){
+                return{
+                    childname:'there is a the circumstance of children',
+                    count:0,
+                    msg:null,
+                }
+            },
+           methods:{
+                add(data){
+                    this.count++;                
+                        this.msg = data
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    msg:null,
+                }
+            },
+            methods: {
+                handleClick(){
+                  this.msg =  this.$refs.mychild.childname
+                  this.$refs.mychild.add(this.$refs.mytext.value)
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
