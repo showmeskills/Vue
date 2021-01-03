@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <nav-bar>
+            <button @click='isActive = !isActive'>navbar-button</button>
+        </nav-bar>
+        <side-bar v-show="isActive"></side-bar>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('navBar',{
+            template:
+            `
+            <div>
+                navbar
+                <slot></slot>
+            </div>
+            `   
+        })
+        Vue.component('sideBar',{
+            template:
+            `
+            <div style='background-color:pink;width:500px;height:500px'>
+                <ul>
+                    <li v-for="(items,idx) in dataList">{{items}}</li>
+                </ul>
+            </div>
+            `,
+            data(){
+                return{
+                    dataList: ['1111','2222','3333']
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    isActive:false
+                }
+            },
+        })
+    </script>
+</body>
+</html>

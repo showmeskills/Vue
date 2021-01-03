@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <child>
+            <div slot="a">I shall be at the first line of slot</div>
+            <div slot="b">I shall be at the last line of slot</div>
+        </child>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        Vue.component('child',{
+            template:
+            `
+            <div>
+                <slot name='a'></slot>
+                I am a child component
+                <slot name='b'></slot>
+            </div>
+            `
+        })
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>
