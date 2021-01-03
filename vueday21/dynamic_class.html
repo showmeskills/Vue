@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a{
+            background-color: red;
+        }
+        .b{
+            background-color:pink;
+        }
+        .c{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div :class="isActive? 'a' : 'b'">I am the dynamic class --- triple operation</div>
+        <button @click="handleClick">clickOne</button>
+        <div :class='classObj'>I am the dynamic class ---- in an object</div>
+        <button @click="handleClick2">clicktwo</button>
+        <div :class='classArr'>I am the dynamic class --- in an array</div>
+        <button @click="handleClick3">clickThree</button>
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    isActive: true,
+                    classObj:{
+                        a:true,
+                        b:true
+                    },
+                    classArr:['a', 'b'],
+                    isSwitched:true
+                }
+            },
+            methods: {
+                handleClick(){
+                    this.isActive = !this.isActive
+                },
+                handleClick2(){
+                    this.classObj.b = !this.classObj.b
+                    
+                },
+                handleClick3(){
+                    if(this.isSwitched){
+                        this.classArr.pop('b')
+                        this.isSwitched = false;
+                    }else{
+                        this.classArr.push('c')
+                        this.isSwitched = true;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

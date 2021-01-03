@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div :style="'background-color:' + (isActive?'yellow':'red')">I am a dynamic style ---- in a triple operation</div>
+        <button @click="handleClick">clickOne</button>
+        <div :style='styleObj'>I am a dynamic style ---- in an object</div>
+        <button @click="handleClick1">clickTwo</button>
+        <div :style='styleArr'>I am a dynamic style ---- in an array</div>
+        <button @click="handleClick2">clickThree</button>
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return {
+                    isActive: true,
+                    styleObj: {
+                        backgroundColor:'red',
+                    },
+                    isSwitched:true,
+                    styleArr:[],
+                }
+            },
+            methods:{
+                handleClick(){
+                    this.isActive = !this.isActive
+                },
+                handleClick1(){
+                    if(this.isSwitched){
+                        this.styleObj.backgroundColor = 'red';
+                        this.styleObj.fontSize = '50px'
+                        this.isSwitched=false
+                    }else{
+                        this.styleObj.backgroundColor = 'pink';
+                        this.styleObj.fontSize = '20px'
+                        this.isSwitched=true;
+                    }
+                },
+                handleClick2(){
+                    if(this.isSwitched){
+                        this.styleArr.push({
+                            backgroundColor:'pink',
+                        })
+                        this.isSwitched=false
+                    }else{
+                        this.styleArr.pop({
+                            backgroundColor:'pink',
+                        })
+                        this.isSwitched=true
+                    }
+            
+                }
+            }
+        })
+    </script>
+</body>
+</html>
