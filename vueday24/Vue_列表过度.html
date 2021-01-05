@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            overflow: hidden;
+        }
+          .show-enter-active,.show-leave-active {
+            transition:all 1.5s;
+        }
+        .show-enter,.show-leave-to{
+            opacity:0;
+            transform:translateX(150px) translateY(150px);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input v-model="msg" type="text"/><span>{{msg}}</span><button style="margin-left:20px;" @click="handleClick">add</button>
+        <!-- 
+            列表过度(设置key值)
+            是用transition-group
+            它不同于transition,它会实例化一个真实元素默认是span标签,你可以通过tag特性更换为其他元素
+            可以把key值设置成data.id
+         -->
+            <transition-group tag='ul' name='show'>
+                <li v-for="(items,idx) in data" :key="items">
+                    {{items}}---{{idx}}
+                <button @click="handleDelete(idx)">del</button>
+                </li>
+            </transition-group>      
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    msg:'11111',
+                    data:[],
+                }
+            },
+            methods:{
+                handleClick(){
+                    this.data = this.data.concat(this.msg)
+                },
+                handleDelete(idx){
+                    this.data.splice(idx,idx+1)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            overflow: hidden;
+        }
+        .nav{
+            height: 50px;
+            list-style-type: none;
+            display:flex;
+            justify-content:center;
+        }
+        .nav li {
+            width:100px;
+            height:50px;
+            text-align: center;
+            line-height:50px;
+            border:1px solid red;
+        }
+        .show-enter-active,.show-leave-active {
+            transition:all 1.5s;
+        }
+        .show-enter,.show-leave-to{
+            opacity:0;
+            transform:translateX(150px) translateY(20px);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul class="nav">
+            <li @click='handleClick(idx)' v-for="(items,idx) in btnList" :key="idx">
+                {{items}}
+            </li>
+        </ul>
+        <!-- 
+            动态组件(可以随意加载任何一个组件) 
+            使用 is 属性来绑定组件名 就可以显示不同的组件
+            切换时候;它是删除上一个DOM组件;换下一个DOM组件;
+            <keep-alive></keep-alive> 保留状态;避免重新渲染
+            <component is='组件名'></component>
+        -->
+        <keep-alive>
+            <transition name='show'>
+                <component :is='who' mode='in-out'></component>
+            </transition>
+        </keep-alive>
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data(){
+                return{
+                    btnList:['home','list','shopCart'],
+                    who:'home'
+                }
+            },
+            components:{
+                "home":{
+                    template:
+                    `<div style='background-color:red;font-size:25px'>home
+                        <input type='text'/>
+                    </div>
+                    `
+                },
+                "list":{
+                    template:
+                    `<div style='background-color:yellow;font-size:25px'>
+                        list
+                    </div>
+                    `
+                },
+                "shopCart":{
+                    template:
+                    `<div style='background-color:pink;font-size:25px'>
+                        shopCart
+                    </div>
+                    `
+                }
+            },
+            methods:{
+                handleClick(idx){
+                    this.who = this.btnList[idx];
+                }
+            }
+        })
+    </script>

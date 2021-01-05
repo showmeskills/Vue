@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 过度风格 */
+        .show-enter-active,.show-leave-active {
+            transition:all 1.5s;
+        }
+        .show-enter,.show-leave-to{
+            opacity:0;
+            transform:translateX(150px) translateY(150px);
+        }
+        /* 关键帧/自定动画 */
+        .hide-enter-active{
+            animation:bounce-in .5s;
+        }
+        .hide-leave-active{
+            animation:bounce-in .5s reverse;
+        }
+        @keyframes bounce-in{
+            0%{
+                opacity:0;
+                transform:translateX(100px);
+            }
+            100%{
+                opacity:1;
+                transform: translateX(0px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="handleClick">click</button>
+        <transition name="show">
+            <div v-show="isShow">1111111</div>
+        </transition>
+        <transition name="hide">
+            <div v-show="isShow">5555555</div>
+        </transition>
+
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    isShow:false,
+                }
+            },
+            methods: {
+                handleClick(){
+                    this.isShow = !this.isShow
+                }
+            }
+        })
+    </script>
+</body>
+</html>
