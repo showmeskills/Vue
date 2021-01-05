@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <demo1>
+            <div slot="a">Using v-if to create a DOM and delete a DOM</div>
+        </demo1>
+        <br>
+        <br>
+        <br>
+        <shopping-cart>
+            <div slot="a">
+                shopping cart demo data
+            </div>
+        </shopping-cart>
+        <br>
+        <br>
+        <br>
+        <demo3>
+            <div slot="a">v-if/v-else-if/v-else</div>
+        </demo3>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('demo1',{
+            template:
+            `
+            <div>
+                <slot name="a"></slot>
+                <h1 v-if='isCreate'>you are creating a DOM</h1>
+                <button @click='handleClick()'>click here</button>
+            </div>
+
+            `,
+            data(){
+                return{
+                    isCreate:false,
+                }
+            },
+            methods:{
+                handleClick(){
+                    this.isCreate = !this.isCreate
+                }
+            }
+        })
+        Vue.component('shoppingCart',{
+            template:
+            `
+            <div>
+                <slot name='a'></slot>
+                <ul v-if='datalist.length'>
+                    <li v-for="(item,idx) in datalist">{{item}}</li>
+                </ul>
+                <div v-else>your shopping cart is empty</div>
+                <button @click='handleClick'>add your shopping</button>
+                <button @click='handleClear'>empty your shopping cart</button>
+            </div>
+            `,
+            data(){
+                return{
+                    datalist:[],
+                }
+            },
+            methods: {
+                handleClick(){
+                    this.datalist = ['Good1','Good2','Good3']
+                },
+                handleClear(){
+                    this.datalist = []
+                }
+            }
+        })
+        Vue.component('demo3',{
+            template: 
+            `
+                <div>
+                    <slot name="a"></slot>
+                    <ul>
+                        <li v-if='which === 1'>Reveal One</li>
+                        <li v-else-if='which === 2'>Reveal Two</li>
+                        <li v-else>Reveal Three</li>
+                    </ul> 
+                    <button @click="handle">change</button>
+                </div>
+            `,
+            data(){
+                return{
+                    which:1,
+                }
+            },
+            methods: {
+                handle(){
+                    this.which++;
+                    if(this.which >=3){
+                        this.which = 0
+                    }
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>
