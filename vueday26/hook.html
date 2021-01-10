@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <child v-if='isCreated'>
+            <son></son>
+        </child>
+        <button @click="handle()">destroy</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+
+        Vue.component('child',{
+            template:
+            `
+            <div>
+                {{msg}}
+                <button @click="handle()">update</button>
+            </div>
+            `,
+
+            data(){
+                return{
+                    msg: 'this is a child component',
+                    flag:true,
+                    count:0,
+                }
+            },
+            methods: {
+                handle(){
+                    if(this.flag){
+                        this.msg = '111111'
+                        this.flag = false
+                    }else{
+                        this.msg = 'this is a child component'
+                        this.flag = true
+                    }
+               }
+            },
+            //前4个生命周期只会执行一次
+            beforeCreate(){
+                document.write('beforeCreate------')
+            },
+            created(){
+                document.write('created------')
+            },
+            //要挂载页面之前
+            beforeMount(){
+                document.write('beforeMount-----')
+            },
+            //挂载页面
+            mounted(){
+                //使用定时器,window.onscroll,$on
+                document.write('mounted')
+            },
+            //beUpadte 和 update 可以无限次使用
+            beforeUpdate(){
+                document.write('beforeUpdate')
+
+            },
+            updated(){
+                document.write('----------updated')
+            },
+            //destroy 也只能销毁一次
+            beforeDestroy(){
+                //销毁定时,window.onscroll,$off
+                document.write('beforeDestroy')
+            },
+            destroyed(){
+                //销毁定时,window.onscroll,$off
+                document.write('--------destroyed')
+            }
+        });
+
+
+     new Vue({
+         el: '#app',
+         data(){
+             return{
+                isCreated:true,
+             }
+         },
+         methods:{
+             handle(){
+                 this.isCreated = !this.isCreated
+             }
+         }
+     })
+    </script>
+</body>
+</html>
