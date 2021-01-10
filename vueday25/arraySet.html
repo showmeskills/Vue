@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          body{
+            overflow: hidden;
+        }
+          .show-enter-active{
+            transition:all 1.5s;
+        }
+        .show-enter,.show-leave-to{
+            opacity:0;
+            transform:translateX(150px);
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <transition-group tag='ul' name='show' mode='out-in'>
+            <li v-for="(item,idx) in data" :key="item">
+                {{item}}
+            </li>
+        </transition-group>
+        <button @click='handleClick'>add</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data(){
+            return{
+                data:['1','2','3'],
+                flag:true,
+            }
+        },
+        methods:{
+            handleClick(){
+                if(this.flag){
+                    Vue.set(this.data,0,'changed');
+                    Vue.set(this.data,1,'wow');
+                    Vue.set(this.data,2,'ohh');
+                    this.flag=false;
+                }else{
+                    Vue.set(this.data,0,'1');
+                    Vue.set(this.data,1,'2');
+                    Vue.set(this.data,2,'3');
+                    this.flag=true;
+                }
+            }
+        }
+    })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model='search'/>
+        <ul>
+            <li v-for="(item,idx) in number">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+     new Vue({
+         el: '#app',
+         data(){
+             return{
+                data:['aaa','bbbb','cccc','dddd','ceee','efef','wrdaaee','dasee'],
+                search:''
+             }
+         },
+         computed:{
+             number(){
+                let {data,search} = this
+                data = data.filter(i=>i.indexOf(search) !== -1)
+                return data
+             }
+         }
+     })
+    </script>
+</body>
+</html>
