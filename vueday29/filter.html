@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./less/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            enter your name:<input type="text" placeholder="search your" v-model='searchName'/>
+            <ul>
+                <li v-for="(items,idx) in personFilter" :key="idx">
+                    {{items.name}}--{{items.age}}--{{items.sex}}
+                </li>
+            </ul>
+        </div>
+        <we :mypersons='persons' :myfilers='title'></we>
+    </div>    
+    
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('we',{
+            template:
+            `
+                <div class='child'>
+                    {{myfilers}}
+                    <input type="text" v-model='mysearch' placeholder='filter uppercase of the username'/>
+                        {{mysearch|name}}
+                    <ul>
+                        <li v-for='item in personname'>{{item|name}}</li>
+                    </ul> 
+                </div>
+            `,
+            props:{
+                mypersons:Array,
+                myfilers:String,
+            },
+            data(){
+                return{
+                    mysearch:'',
+                    personname:[],
+                }
+            },
+            mounted() {
+                this.personname = this.mypersons.map(i=>i.name)
+            },
+            filters:{
+                name(value){
+                   return value.replace(/[a-z]/g,'')
+                },
+        
+            }
+        })
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    persons:[
+                        {name:'Peter',age:'18',sex:'Male'},
+                        {name:'PeterA',age:'28',sex:'Female'},
+                        {name:'PeterB',age:'38',sex:'Male'},
+                        {name:'PeterC',age:'48',sex:'Female'},
+                        {name:'Terry',age:'58',sex:'Male'},
+                        {name:'TerryA',age:'18',sex:'Male'},
+                        {name:'TerryB',age:'28',sex:'Female'},
+                        {name:'TerryC',age:'38',sex:'Male'},
+                        {name:'Erick',age:'48',sex:'Female'},
+                        {name:'ErickI',age:'58',sex:'Male'},
+                        {name:'ErickII',age:'98',sex:'Male'},
+                        {name:'ErickIII',age:'78',sex:'Male'},
+                        {name:'Summy',age:'38',sex:'Male'}
+                    ],
+                    title:'filter function',
+                    searchName:''
+                }
+            },
+            computed:{
+                personFilter(){
+                    let {persons,searchName} = this;
+                    persons = persons.filter(item=>item.name.indexOf(searchName) !== -1)
+                    return persons
+                }
+            }
+        });
+    </script>
+</body>
+</html>

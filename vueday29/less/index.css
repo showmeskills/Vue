@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#app ul {
+  margin-top: 25px;
+  list-style-type: none;
+}
+#app ul li {
+  margin-bottom: 5px;
+}
+#app .child {
+  background-color: pink;
+  margin-top: 25px;
+}
