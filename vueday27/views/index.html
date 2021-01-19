@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <div v-show="isShow">I am controlled by ul</div>
+        <div v-show="isShow1">I am controlled by the first li</div>
+        <div v-show="isShow2">I am controlled by the second li,but I am triggered at once only</div>
+        <div v-show="isShow3">I am controlled by the last li with $event</div>
+        <ul style="border:1px solid red" @click.self="handleUl">
+            <li style='background-color: pink;' @click.stop='handleClick'>botton one</li>
+            <li style='background-color: red;' @click.once='handleOnce'>botton two</li>
+            <li style='background-color: green;' @click='handleChange($event)'>botton three</li>
+        </ul>
+        <div><a href="http://www.google.com" @click.prevent='jumpTo'>Link to google search</a></div>
+        <br>
+        <br>
+        <br>
+        {{msg1}}
+        <div>
+            <input type="text" ref='toInput' @keyup.enter='enter()'/>
+            <ul v-if="data.length">
+                <li v-for="(item,idx) in data">
+                    {{item}}
+                </li>
+            </ul>
+            <div v-else=>
+                {{data1}}
+            </div>
+           
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data(){
+                return{
+                    msg:'vue event/.self/.once/.stop/$event',
+                    msg1:'keyup event there is an example of keyup.enter',
+                    isShow:true,
+                    isShow1:true,
+                    isShow2:true,
+                    isShow3:true,
+                    toInput:'',
+                    data:[],
+                    data1:'please enter your data'
+                }
+            },
+            methods: {
+                enter(){
+                    if(this.$refs.toInput.value === ''){
+                        this.data.length = 0;
+                    }else{
+                        this.data.push(this.$refs.toInput.value)
+                    }
+                },
+                handleClick(){
+                    this.isShow1 = !this.isShow1
+                },
+                handleUl(){
+                    this.isShow = !this.isShow
+                },
+                handleOnce(){
+                    this.isShow2 = !this.isShow2
+                },
+                handleChange(e){
+                    e.preventDefault();
+                    this.isShow3 = !this.isShow3
+                },
+                jumpTo(){
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>
