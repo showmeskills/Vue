@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        single checkbox:<input type="checkbox" v-model="isChecked"/> display(value):{{isChecked}}
+        <br>
+        <br>
+        <br>
+        multiple checkbox: using an array to save the value
+        <br>
+        what's your favorite programming languages
+        <br>
+        <input type="checkbox" v-model="checkGroup" value="php"/>php
+        <input type="checkbox" v-model="checkGroup" value='javascript'/>javascript
+        <input type="checkbox" v-model="checkGroup" value='Java'/> Java
+        <input type="checkbox" v-model="checkGroup" value='C#'/>C#
+        <div>display your collections:{{checkGroup}}</div>
+        <br>
+        <br>
+        <br>
+        multiple checkbox,but you select one of them only: useing enpty 'string' to save your results
+        <div>
+            what's your favorite sports
+            <br>
+            <input type="radio" v-model="check" value="swimming">swimming
+            <input type="radio" v-model="check" value="running">running
+            <input type="radio" v-model="check" value="skiing">skiing
+            <input type="radio" v-model="check" value="hiking">hiking
+        </div>
+        {{check}}
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data(){
+                return{
+                    isChecked:false,
+                    checkGroup:[],
+                    check:''
+                }
+            }
+        })
+    </script>
+</body>
+</html>
