@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/css/swiper.css">
+    <title>Document</title>
+    <style>
+        .swiper-container {
+            width: 600px;
+            height: 300px;
+        }  
+    </style>
+</head>
+<body>
+    <div id="app">
+        <swiper :key="dataList.length">
+                <div class="swiper-slide" v-for="(data,index) in dataList" 
+                v-swipe='{
+                    index,
+                    length:dataList.length
+                }'
+                >
+                    <img :src="data.path" alt="">
+                </div>
+        </swiper>
+    </div>
+
+    <script src="dist/js/swiper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+
+        
+        Vue.component('swiper',{
+            template:
+            `
+            <div class="swiper-container open">
+                <div class="swiper-wrapper">
+                    <slot></slot>    
+                </div>       
+                <div class="swiper-pagination"></div>              
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            `
+        })
+
+        Vue.directive('swipe',{
+            inserted(el,bind){
+                if(bind.value.index === bind.value.length -1){
+                    new Swiper('.open',{
+                        loop:true,
+                        navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                        },
+                        autoplay: {
+                            delay: 1000,
+                            stopOnLastSlide: false,
+                            disableOnInteraction: true,
+                        },
+                    })
+                }
+            }
+        })
+
+        new Vue({
+            el: '#app',
+            data(){
+                return {
+                    dataList:[]
+                }
+            },
+            mounted(){
+                setTimeout(() =>{
+                    this.dataList = [ 
+                        {path:'./img/1.png',id:0},
+                        {path:'./img/2.png',id:1},
+                        {path:'./img/3.png',id:2},
+                        {path:'./img/4.png',id:3},
+                        {path:'./img/5.png',id:4},
+                    ]
+                },2000)
+            }
+        })
+    </script>
+</body>
+</html>
