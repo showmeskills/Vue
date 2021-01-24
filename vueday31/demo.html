@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        
+       
+        first-name: <input type="text" v-model="firstName"/><br>
+        last-name: <input type="text" v-model="lastName"/><br>
+        Fullname(one way): <input type="text" v-model="fullName1"/>---computed attri<br>
+        Fullname(one way): <input type="text" v-model="fullName2"/>---watch attri<br>
+        Fullname(two way): <input type="text" v-model="fullName3"/>---get and set<br>
+        Vue - computed you can use many times but it executes once only, the reason is that computed has a function of cache
+        <br>
+        use first time{{fullName1}}
+        <br>
+        second time{{fullName1}}
+        <br>
+        third time{{fullName1}}
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#app',
+            data(){
+                return{
+                    firstName:'A',
+                    lastName:'B',
+                    fullName2:''
+                }
+            },
+            computed:{
+                fullName1(){
+                    document.write('how many times the computed do use ====> fullName1()')
+                    let {firstName,lastName} = this; 
+                    return firstName + ' ' + lastName
+                },
+                fullName3:{
+                    get(){
+                        let {firstName,lastName} = this; 
+                        return firstName + ' ' + lastName
+                    },
+                    set(value){
+                        let names = value.split(' ');
+                        this.firstName = names[0];
+                        this.lastName = names[1]
+                    }
+                }
+            },
+            watch:{
+                firstName(oldVal,newVal){
+                    this.fullName2 = newVal + ' '+ this.lastName
+                }
+            }
+        })
+        vm.$watch('lastName',function(oldVal,newVal){
+            this.fullName2 = this.firstName+ ' ' +newVal;
+        })
+    </script>
+</body>
+</html>
