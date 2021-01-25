@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .aClass{
+            color: pink;
+            font-size: 20px;
+        }
+        .bClass{
+            color: green;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>:class ---> three types</h1>
+        <p :class="a">:class is used to be variable</p>
+        <p :class="classObj">:class is used to be an object</p>
+        <p :class="classArr">:class is used to be an array</p>
+
+        <h1>:style ---> three types</h1>
+        <p :style="b">:style is used to be variable</p>
+        <p :style="styleObj">:style is used to be an object</p>
+        <p :style="styleArr">:style is used to be an array</p>
+        <button @click="handleClick">Click and change</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return {
+                    a:'aClass',
+                    b:"color:pink;font-size:20px",
+                    flag:true,
+                    classObj:{
+                        aClass:true,
+                        bClass:false
+                    },
+                    classArr:["aClass"],
+                    styleObj:{
+                        color: "pink",
+                        fontSize:'20px'
+                    },
+                    styleArr:[{
+                        color: "pink",
+                        fontSize:'20px'
+                    }]
+                }
+            },
+            methods: {
+                handleClick(){
+                    if(this.flag){
+                        this.a = 'bClass'
+                        this.classObj.aClass = false;
+                        this.classObj.bClass = true;
+                        this.classArr.pop("aClass")
+                        this.classArr.push("bClass")
+                        this.b = 'color: green;font-size: 30px;'
+                        this.styleObj ={
+                            color: "green",
+                            fontSize:'30px'
+                        }
+                        this.styleArr.pop({
+                            color: "pink",
+                            fontSize:'20px'
+                        })
+                        this.styleArr.push({
+                            color: "green",
+                            fontSize:'30px'
+                        })
+                        this.flag = false
+                    }else{
+                        this.a = 'aClass';
+                        this.classObj.aClass = true;
+                        this.classObj.bClass = false;
+                        this.classArr.pop("bClass");
+                        this.classArr.push("aClass");
+                        this.b="color:pink;font-size:20px",
+                        this.styleObj={
+                            color: "pink",
+                            fontSize:'20px'
+                        }
+                        this.styleArr.pop({
+                            color: "green",
+                            fontSize:'30px'
+                        })
+                        this.styleArr.push({
+                            color: "pink",
+                            fontSize:'20px'
+                        })
+                        this.flag = true;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
