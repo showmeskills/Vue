@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            common Slot expression-->{{msg}}
+        </div>
+        <br>
+        <div>
+            arr-->{{arr}}
+        </div>
+        <br>
+        <div>
+            javascriptExpression===>{{msg.split(' ').reverse().join('')}}
+        </div>
+        <br>
+        <div>
+            Ternary operation--->{{num < num1 ? 'yes' : 'no'}}
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data(){
+                return{
+                    msg: 'Vue2 basic knowledge',
+                    arr:['Terry','Terrance','Erick'],
+                    object:{
+                        name:'Terry',
+                        age:18
+                    },
+                    num:1,
+                    num1:2
+                }
+            }
+        })
+    </script>
+</body>
+</html>
