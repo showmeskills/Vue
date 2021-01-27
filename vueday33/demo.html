@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-if="isShow">you have successfully</p>
+        <p v-else>you have unsuccessfully</p>
+        <p v-show="isShow">you have a girlfriend</p>
+        <p v-show="!isShow">you don't have a girlfriend</p>
+        <button @click='isShow = !isShow'>click</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data(){
+                return{
+                    isShow:false,
+                }
+            }
+        })
+    </script>
+</body>
+</html>
