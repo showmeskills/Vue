@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>double binding</h1>
+        <input type="text" v-model='title' /> {{title}}
+        <br>
+        <h1>binding an empty string</h1>
+        checkbox:<input type="checkbox" v-model='isChecked' /> {{isChecked}}
+        <br>
+        <h1>binding an array</h1>
+        checkGroup:{{isCheckedGroup}}
+        <div>
+            <input type="checkbox" v-model='isCheckedGroup' value="Java"/> Java
+            <input type="checkbox" v-model='isCheckedGroup' value="Javescript"/> Javescript
+            <input type="checkbox" v-model='isCheckedGroup' value='php'/> php
+            <input type="checkbox" v-model='isCheckedGroup' value='python'/> python
+            <input type="checkbox" v-model='isCheckedGroup' value="c#"/> c#
+        </div>
+
+        <h1>binding an object --</h1>
+        checkGroup:{{isCheckedObj}}
+        <div>
+            <input type="checkbox" v-model='isCheckedObj' value="Java"/> Java
+            <input type="checkbox" v-model='isCheckedObj' value="Javescript"/> Javescript
+            <input type="checkbox" v-model='isCheckedObj' value='php'/> php
+            <input type="checkbox" v-model='isCheckedObj' value='python'/> python
+            <input type="checkbox" v-model='isCheckedObj' value="c#"/> c#
+        </div>
+
+
+        <h1>radio ===:{{gender}}</h1>
+        <label for="man">
+            <input type="radio" v-model='gender' id="man" value='female'>female
+        </label>
+        <label for="woman">
+            <input type="radio" v-model='gender' id="woman" value='male'>male
+        </label>
+
+        <h1>Select function:{{selectList}}</h1>
+        <select v-model='selectList'>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+            <option value="audi">Audi</option>
+        </select>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    title: 'the demo is about v-model that is binding data from double directions',
+                    isChecked:true,
+                    isCheckedGroup:[],
+                    gender:'female',
+                    isCheckedObj:{},
+                    selectList:"volvo",
+                }
+            }
+        })
+    </script>
+</body>
+</html>

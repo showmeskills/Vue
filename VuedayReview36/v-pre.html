@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1 v-pre>{{title}}</h1>
+        <h1 v-pre v-text="title"></h1>
+        <h1 v-pre v-html="title"></h1>
+        <input v-pre type="text" v-model='title'/>
+        {{title}}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    title: 'v-pre enforces v-text,v-html,v-model which are losed their capabilities'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

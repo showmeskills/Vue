@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1 v-text='title'></h1>
+        <h1 v-text='title + "    I can concat with string and number"'></h1>
+        <h1 v-text=' 1 > 2? " " : "it supports Ternary operation "'></h1>
+        <h1 v-text='title +   title1'></h1>
+        <h1 v-text='title2'>the contents are from H5 which are invalid</h1>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data(){
+                return{
+                    title:'the demo is about v-text',
+                    title1:'(i am a variable)',
+                    title2:'the contents are from H5 which are invalid'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

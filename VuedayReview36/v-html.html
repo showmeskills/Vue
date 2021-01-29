@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-html="title"></div>
+        <div v-html="title + 'it supports to use H5 tabs'"></div>
+        <div v-html="1>2 ? '': 'it supports to use it supports Ternary operation'"></div>
+        <h1>{{title1}}</h1>
+        <div v-html="title.replace('v-html','(I am replaced)')"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data(){
+                return{
+                    title:'<h1>the demo is about v-html</h1>',
+                    title1:'supports sample javascript expression'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
