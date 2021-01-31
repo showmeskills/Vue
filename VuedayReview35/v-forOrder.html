@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder="enter your search name" v-model="searchName">
+        <ul>
+            <li v-for="(data,idx) in filterPersons" :key="data.id">
+                {{data.id}}---{{data.name}}---{{data.age}}
+            </li>
+        </ul>
+        <button @click='orderByAge(1)'>ascending</button>
+        <button @click='orderByAge(2)'>descending</button>
+        <button @click='orderByAge(0)'>default</button>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data(){
+            return {
+                persons:[ 
+                    {name: 'Tom',age:18,id:0},
+                    {name: 'Peter',age:60,id:1},
+                    {name: 'Jack',age:28,id:2},
+                    {name: 'Rose',age:18,id:3},
+                ],
+                searchName:'',
+                orderType:0
+            }
+        },
+        methods: {
+            orderByAge(orderType){
+                this.orderType = orderType
+            }
+        },
+        computed:{
+            filterPersons(){
+                
+                let arr = [...this.persons];
+                arr = arr.filter(item=>item.name.indexOf(this.searchName) !== -1);
+                if(this.orderType){
+                    arr.sort((a,b)=>{
+                        if(this.orderType === 1){
+                            return a.age - b.age;
+                        }else{
+                            return b.age - a.age;
+                        }
+                    })
+                }
+                return arr;
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{title}}
+        <h1>text: v-for in array</h1>
+        <ul>
+            <li v-for="(data,idx) in persons" :key="data.id">
+                {{data.id}}---{{data.name}}--{{data.age}}
+                ---<button @click='handleDelete(idx)'>delete</button>
+                ---<button @click='handleRenew(idx,{name:"cat",age:25,id:data.id})'>renew</button>
+            </li>
+        </ul>
+        <h1>text:v-for in object</h1>
+        <ul>
+            <li v-for="(value,key) in persons[1]" :key="key">
+               {{key}}:{{value}}
+            </li>
+        </ul>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data(){
+            return {
+                persons:[ 
+                    {name: 'Tom',age:18,id:0},
+                    {name: 'Peter',age:60,id:1},
+                    {name: 'Jack',age:28,id:2},
+                    {name: 'Rose',age:18,id:3},
+                ],
+                title: `In the vue, it has its own Array API, if you don't use them, the views can't renew and render again after you will update your data`
+            }
+        },
+        methods:{
+            handleDelete(idx){
+                this.persons.splice(idx, 1);
+            },
+            handleRenew(idx,newValue){
+                this.persons.splice(idx,1,newValue)
+            }
+        }
+    })
+</script>
+</body>
+</html>
