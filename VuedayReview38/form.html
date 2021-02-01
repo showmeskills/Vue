@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 自动收集表单数据 -->
+    <div id="app">
+        <form action="" @submit.prevent="handleSubmit">
+            Username:<input type="text" v-model='username'/>
+            <br>
+            Password:<input type="password" v-model='pwd'/>
+            <br>
+            Gender: 
+            <input type="radio" id="female" value='female' v-model='gender'/>
+            <label for="female">Female</label>
+            <input type="radio" id="male" value='male' v-model='gender'/>
+            <label for="male">Male</label>
+            <br>
+            hobbies:
+            <input type="checkbox" id="basketball" v-model='checkGroup' value="basketball"/>
+            <label for="basketball">basketball</label>
+            <input type="checkbox" id="football" v-model='checkGroup' value="football"/>
+            <label for="football">football</label>
+            <input type="checkbox" id="surfing" v-model='checkGroup' value="surfing"/>
+            <label for="surfing">surfing</label>
+            <input type="checkbox" id="Cargame" v-model='checkGroup' value="Cargame"/>
+            <label for="surfing">Cargame</label>
+            <br>
+            Country:
+            <select v-model='countryId'>
+                <option value="">No choose</option>
+                <option v-for="data in country" :value="data.id">{{data.name}}</option>
+            </select>
+            <br>
+            <textarea v-model='description'></textarea>
+            <br>
+            <input type="submit" value="submit"/>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    username:'',
+                    pwd:'',
+                    gender:'female',
+                    checkGroup:['Cargame',],
+                    country:[
+                        {id:1,name:'China'},
+                        {id:2,name:'Australia'},
+                        {id:3,name:'Malaysia'},
+                        {id:4,name:'Taiwan'},
+                    ],
+                    countryId:'', 
+                    description:''                   
+                }
+            },
+            methods:{
+                handleSubmit(){
+                    let {username,pwd,gender,checkGroup,countryId,description,collection} = this;
+                    console.log(username,pwd,gender,checkGroup,countryId,description)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
