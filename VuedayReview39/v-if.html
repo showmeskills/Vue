@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <input type="text" v-model='number'>
+        <p v-if='number < 18'>children</p>
+        <p v-else-if='number < 40'>Adult</p>
+        <p v-else-if='number < 60'>Old peopele</p>
+        <p v-else>Really old</p>
+    </div>
+
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    title:'v-if/v-else-if/v-else',
+                    number:0,
+                }
+            }
+        })
+    </script>
+</body>
+</html>

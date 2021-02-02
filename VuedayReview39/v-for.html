@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(data,idx) in dataList" :key="data.id">
+                {{data.name}}
+                <ul>
+                    <li v-for="(data1,idx) in data.subList" :key="data.id">
+                        {{data1.option}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return {
+                    dataList:[],
+                }
+            },
+            mounted(){
+                setTimeout(()=>{
+                    this.dataList = [
+                        {
+                            name:'admin',
+                            subList:[
+                                {option:'add'},
+                                {option:'delete'},
+                            ]
+                        },
+                        {
+                            name:'commodity',
+                            subList:[
+                                {option:'add'},
+                                {option:'delete'},
+                            ]
+                        },
+                        {
+                            name:'catergroy management',
+                        },
+                    ]
+                },2000)
+            }
+        })
+    </script>
+</body>
+</html>
