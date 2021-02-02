@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="destroyVM">destroy vm</button>
+        <h1 v-show="isShow">{{msg}}</h1>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return {
+                    msg:'',
+                    isShow:true
+                }
+            },
+            beforeCreate(){
+                console.log(`beforeCreate`)
+            },
+            created(){
+                console.log(`created`)
+            },
+            beforeMount(){
+                console.log(`beforeMount`)
+            },
+            mounted() {
+                this.msg = 'vue - hook function'
+                this.intervalId = setInterval(()=>{
+                   this.isShow = !this.isShow 
+                   //console.log('times')
+                },2000)
+            },
+            beforeUpdate(){
+                console.log(`beforeUpdate`)
+            },
+            updated(){
+                console.log(`updated`)
+            },
+            beforeDestroy(){
+                clearInterval(this.intervalId)
+                console.log(`beforeDestory`)
+            },
+            destroyed(){
+                console.log(`destroyed`)
+            },
+            methods:{
+                destroyVM(){
+                    this.$destroy();
+                }
+            },
+            
+        })
+    </script>
+</body>
+</html>
