@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <h1 @mouseover='isShow = !isShow'  @mouseleave='isShow = !isShow'>hover me</h1>
+        <h1 :style="isShow ? 'backgroundColor:red;fontSize:20px;transition:all .5s;':'backgroundColor:green;fontSize:25px;transition:all .5s;'">vue_:style</h1>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    isShow:true,
+                }
+            }
+        })
+    </script>
+</body>
+</html>

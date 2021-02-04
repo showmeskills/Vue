@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            overflow: hidden;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .red {
+            color: red;
+            font-size: 16px;
+            transition:all .5s;
+        }
+        .green{
+            color: green;
+            font-size: 25px;
+            transition:all .5s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1 @mouseover="isShow = !isShow" @mouseleave="isShow = !isShow" style="width:100px;border:1px solid red;">hover me</h1>
+        <h1 :class="isShow? 'red':'green'">v-bind:class</h1>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    isShow:true,
+                }
+            }
+        })
+    </script>
+</body>
+</html>
