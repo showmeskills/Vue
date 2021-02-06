@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{topic}}</h1>
+        <p>fullyTime:{{date | dateString}}</p>
+        <p>Year Month Day   {{date | dateString('MM-DD-YYYY')}}</p>
+        <p>Hour Minutes Seconds  {{date | dateString('HH:mm:ss')}}</p> 
+        <h1>without moment.js</h1>
+        <p>{{date | filterTime}}</p>
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <script>
+        Vue.filter('dateString',function(value,format){
+            return moment(value).format(format || 'MM-DD-YYYY, HH:mm:ss')
+        })
+
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    topic:`format time`,
+                    date:new Date(),
+                    count:0
+                }
+            },
+            filters:{
+                filterTime(value){
+                    let yy = value.getFullYear();
+                    let mm = value.getMonth();
+                    let dd = value.getDay();
+                    return `${yy}-${mm+1}-${dd}`
+                }
+            }
+        })
+    </script>
+</body>
+</html>
