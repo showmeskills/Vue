@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <table class="table table-bordered table-hover">
+                <caption class="h1 text-center text-info">{{topic}}</caption>
+                <tr>
+                    <td v-for="(data,idx) in arr" :key="data">
+                        {{data}}
+                    </td>
+                </tr>
+                <tr v-if='dataList.length === 0'>
+                    <td colspan="5" class="text-center text-muted"><p>data loading....</p></td>
+                </tr>
+                <tr v-else class="text-center" v-for="(data,idx) in dataList" :key="data.id">
+                <td>{{idx + 1}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.gender}}</td>
+                <td>{{data.age}}</td>
+                <td>
+                    <button class="btn btn-danger" @click="update(idx)">update</button>
+                    <button class="btn btn-warning" @click="del(idx)">delete</button>
+                </td>
+            </tr>
+            </table>
+        </div>
+            <hr>
+            <div v-if="dataList.length" class="row" style="width: 500px; margin: 0 auto; border: 2px solid ghostwhite; padding: 15px;">
+                <form>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Name:</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" v-model='newUser.name' placeholder="please enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Gender:</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" v-model='newUser.gender' placeholder="please enter your gender">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Age:</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" v-model.number='newUser.age' placeholder="please enter your age">
+                      </div>
+                      <div class="form-group">
+                        <button type="button" class="btn btn-primary btn-sm"  @click="add()">add</button>
+                        <button type="button" class="btn btn-danger btn-sm" @click="newUser={}">reset</button>
+                      </div>
+                  </form>
+            </div>
+            <div v-else class="h1 text-center text-danger">please hold on</div>
+    </div>
+
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            data(){
+                return {
+                    topic:`User-info list`,
+                    arr:['#','Name','Gender','Age','options'],
+                    dataList:[],
+                    newUser:{
+                        id:0,
+                        name:'',
+                        gender:'',
+                        age:''
+                    }
+                }
+            },
+            mounted(){
+                setTimeout(() =>{
+                    this.dataList = [ 
+                        {id:1,name:'Terry',gender:'Male',age:26},
+                        {id:2,name:'Terrance',gender:'Male',age:22},
+                        {id:3,name:'Eric',gender:'Male',age:25},
+                        {id:4,name:'Jill',gender:'Female',age:60}
+                    ]
+                },5000)
+            },
+            methods: {
+                add(){
+                    let id = 0;
+                    for(let i = 0; i < this.dataList.length; i++){
+                        if(id < this.dataList[i].id){
+                            id = this.dataList[i].id
+                        }
+                    };
+                    if(this.newUser.name === ' ' || this.newUser.age === '' || this.newUser.gender === '' ){
+                        alert(`please complete your all infomation`)
+                        return;
+                    }
+                    this.newUser.id = id++;
+                    this.dataList.push(this.newUser);
+                    this.newUser = {};
+                },
+                del(idx){
+                    this.dataList.splice(idx,1)
+                },
+                update(idx){
+                    this.$set(this.dataList,idx,this.newUser)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

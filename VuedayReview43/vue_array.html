@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <ul>
+            <li v-for="(data,idx) in dataList" :key="idx">
+                {{data}}
+            </li>
+        </ul>
+        <button @click="array">push</button>
+        <button @click="array1">pop</button>
+        <button @click="array2">shift</button>
+        <button @click="array3">unshift</button>
+        <button @click="array4">splice-delete</button>
+        <button @click="array5">splice-add</button>
+        <button @click="array6">splice-replace</button>
+        <button @click="array7">Vue.set()</button>
+    </div>
+
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el:'#app',
+            data(){
+                return{
+                    dataList:[
+                        'Terrance',
+                        'Summy',
+                        'Jack'
+                    ]
+                }
+            },
+            methods: {
+                array(){
+                    this.dataList.push('A','B')
+                },
+                array1(){
+                    this.dataList.pop()
+                },
+                array2(){
+                    this.dataList.shift()
+                },
+                array3(){
+                    this.dataList.unshift('A','B')
+                },
+                array4(){
+                    this.dataList.splice(1,1)
+                },
+                array5(){
+                    this.dataList.splice(1,0,'A')
+                },
+                array6(){
+                    this.dataList.splice(1,1,'AA')
+                },
+                array7(){
+                    this.$set(this.dataList,1,'AAA')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
