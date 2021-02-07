@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <p v-upper-text='global'></p>
+        <p v-lower-text='local'></p>
+        <p v-hooker='hookers'></p>
+        <p v-hooker='mycolor'>33333</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.directive('upper-text',function(el,bind){
+            el.innerHTML = bind.value.toUpperCase();
+        })
+        Vue.directive('hooker',{
+
+            inserted(el,bind){
+                el.innerHTML = bind.value
+                el.style.backgroundColor = bind.value
+            },
+        })
+        new Vue({
+            el:'#app',
+            data(){
+                return {
+                    msg:'directives control DOM elements',
+                    global:'this is a global directive',
+                    local:'this is a local directives',
+                    hookers:'this is a hook directives functions',
+                    mycolor:'pink'
+                }
+            },
+            directives:{
+                'lower-text':{
+                    bind(el,bind){
+                        el.innerHTML = bind.value.toUpperCase()
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
