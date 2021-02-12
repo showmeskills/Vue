@@ -91,7 +91,7 @@
                             id = this.dataList[i].id
                         }
                     };
-                    if(this.newUser.name === ' ' || this.newUser.age === '' || this.newUser.gender === '' ){
+                    if(!this.newUser.name || !this.newUser.age || !this.newUser.gender){
                         alert(`please complete your all infomation`)
                         return;
                     }
