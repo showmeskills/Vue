@@ -20,18 +20,18 @@ export default {
     },
     data(){
        return{
-           todos:null,
+           todos:JSON.parse(window.localStorage.getItem('todos_key') || '[]'),
        }
     },
-    mounted(){
-        setTimeout(() =>{
-            this.todos = [ 
-                {title:'dinning',complete:false},
-                {title:'sleeping',complete:true},
-                {title:'coding',complete:false},
-               ]
-        },2000)
-    },
+    watch:{
+        todos:{
+            deep:true,
+            handler(newVal,oldVal){
+                 window.localStorage.setItem('todos_key',JSON.stringify(newVal))
+            }
+        }
+    }
+    ,
     methods: {
        addItem(todo){
            this.todos.push(todo)
