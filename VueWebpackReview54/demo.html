@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test">test</div>
+    <ul id="fragment_test">
+        <li>test1</li>
+        <li>test2</li>
+        <li>test3</li>
+    </ul>
+
+    <script type="text/javascript">
+        /*
+            vue original code is realised with the most important six points
+            1.the pseudo array is converted into real array
+            ES5
+            Array.prototype.slice()
+            ES6
+            Array.from()
+            2.node.nodeType
+            node is a virtual thing, it includes document,element,attribute and text node
+            3.* add an attribute on a given object
+            Object.defineProperty(obj,propertyName,{}) 
+            1.data description (all defualt is false)
+                configurable: false, it can be configurable or not
+                enumerable:false, it can be enumerable or not
+                value:initial value, 
+                writable:false, it can be changed or not
+            2.visit discription
+            Get: callback function to dynamically calculate the current property value according to other related properties
+            Set: callback function to monitor the change of current attribute value and update other related attributes
+            4.Object.keys(obj) get object-self and enumerable attributes
+            5.obj.hasOwnProperty(prop):it justified that props are belonging to the obj
+            6.DocumentFragement:Height effectiveness changing or renew HTML DOM 
+        */
+
+        // Object.defineProperty(obj,propertyName,{})  case
+        const obj = {
+            firstName: 'A',
+            lastName: 'B'
+        };
+        Object.defineProperty(obj, "fullName", {
+            get() {
+                return this.firstName + '-' + this.lastName
+            },
+            set(value) {
+                const names = value.split('-');
+                this.firstName = names[0];
+                this.lastName = names[1];
+            }
+        });
+
+        console.log(obj.fullName)//A-B
+        obj.firstName = 'C'
+        obj.lastName = 'D'
+        console.log(obj.fullName)//C-B
+
+        Object.defineProperty(obj, 'fullName2', {
+            configurable: true,
+            enumerable: false,
+            value: 'G-H',
+            writable: false,
+        })
+        obj.fullName2 = 'j-k'
+        console.log(obj.fullName2)//G-H
+
+
+        //Object.keys(obj)
+        const names = Object.keys(obj)
+        console.log(names)//["firstName", "lastName"]
+        //why it returns an new array that is not included fullName2 due to enumerable is false
+
+        //obj.hasOwnProperty(prop)
+        console.log(obj.hasOwnProperty('fullName'), obj.hasOwnProperty('toString')) //true and false, obj can use toString,but it is not belonged itself
+
+        //DocumentFragement example
+        const ul = document.getElementById('fragment_test');
+        //1.create fragment
+        const fragment = document.createDocumentFragment()
+        //2. get elements from ul and save those to fragment(cache)
+        let child
+        while (child = ul.firstChild) {
+            fragment.appendChild(child)
+        }
+        //3.renew tags(li) in fragment, and it has to be converted into a real array because the elements of fragment are pseudo array
+        Array.prototype.slice.call(fragment.childNodes).forEach(node => {
+            if (node.nodeType === 1) {
+                node.textContent = 'Terry'
+            }
+        })
+        //4.putting all elements from fragment to DOM
+        ul.appendChild(fragment)
+    </script>
+</body>
+
+</html>
