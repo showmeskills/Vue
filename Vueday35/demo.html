@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <style>
+        body,
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ul,
+        ol,
+        li,
+        dl,
+        dt,
+        dd {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        #app {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-drag v-random_color></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const directives = {
+            drag: {
+                inserted(el) {
+                    el.style.position = "absolute"
+                    el.onmousedown = function (e) {
+                        e = e || window.event
+                        e.preventDefault()
+                        const disx = e.pageX - el.offsetLeft
+                        const disy = e.pageY - el.offsetTop
+                        const offsetNode = el.offsetParent
+                        document.onmousemove = function (e) {
+                            e.preventDefault()
+                            let x_ = e.pageX - disx
+                            let y_ = e.pageY - disy
+                            if (x_ < 0) {
+                                x_ = 0
+                            } else if (x_ > (offsetNode.offsetWidth - el.offsetWidth)) {
+                                x_ = offsetNode.offsetWidth - el.offsetWidth
+                            }
+                            if (y_ < 0) {
+                                y_ = 0
+                            } else if (y_ > (offsetNode.offsetHeight - el.offsetHeight)) {
+                                y_ = offsetNode.offsetHeight - el.offsetHeight
+                            }
+                            el.style.left = x_ + 'px'
+                            el.style.top = y_ + 'px'
+                        }
+                        document.onmouseup = function () {
+                            document.onmousemove = document.onmouseup = null
+                        }
+                    }
+                }
+            },
+            random_color: {
+                inserted(el) {
+                    el.addEventListener('mousedown',color)
+                    function color() {el.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16)};
+                }
+            }
+        }
+        Object.keys(directives).forEach(key => {
+            Vue.directive(key, directives[key])
+        })
+        var vm = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>
