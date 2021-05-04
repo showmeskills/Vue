@@ -1,0 +1,113 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../image/bizhi.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.title > h1{
+    color:rgb(255, 255, 255);
+    margin-top: 4rem;
+    text-align: center;
+}
+
+table {
+    width: 60%;
+    margin: 50px auto;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    border:none;
+    border-radius: 20px;
+    color:white; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7),
+                -2px -2px 5px rgba(255, 255, 255, .1);
+  }
+
+.book {
+    margin-top: 10px;
+}
+
+.table-row{
+    padding: 2rem 0rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.table-row a{
+    text-decoration: none;
+    color: white;
+
+}
+
+.col-left{
+    position: relative;
+}
+
+.col-left::after{
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 110%;
+    background-color: rgb(255, 255, 255);
+    top: -5%;
+    right: -15%;
+}
+
+th h2{
+    font-size: 2.5rem;
+}
+th p{
+    font-size: 1.25rem;
+    margin-bottom: .5rem;
+    font-weight: normal;
+}
+
+th p.features{
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+
+th h2,p{
+    letter-spacing: 2px;
+    text-align: left;
+}
+
+th hr{
+    margin-bottom: 1rem;
+    width: 50%;
+}
+
+th ul li{
+    display: list-item;
+}
+
+.btn-book{
+    font-size: 1.25rem;
+    padding: .5em 1.5em;
+    background: rgb(221, 85, 85);
+    border-radius: 10px;
+    border:none;
+    color: white;
+    cursor: pointer;
+    float: right;
+    margin-top: 1rem;
+}
+
+.btn-delete{
+    font-size: 1.25rem;
+    padding: .5em 1.5em;
+    background: rgb(221, 85, 85);
+    border-radius: 10px;
+    border:none;
+    color: white;
+    cursor: pointer;
+    float: right;
+    margin-top: 1rem;
+}

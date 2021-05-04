@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta data -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/search.css">
+    <!-- iconfont link -->
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2518208_cwal4ctd9a.css">
+    <title>UniBnB</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- header nav bar start -->
+    <header-nav-bar :status=isLoginStatus></Header-nav-bar>
+    <!-- header nav bar end -->
+    <!-- search popup start  -->
+        <search-popup v-show="isPopupShow" :pop-close="popClose" 
+        :checkin="checkin" :checkout="checkout"
+        :list-filter="listFilter"
+        ></search-popup>
+
+    <!-- search popup end -->
+    <!-- search form start-->
+        <section id="home">
+            <div class="home container">
+                <div class="hero">
+                    <h1>{{banner}}<br>{{everyWhere}}</h1>
+                </div>
+                <div class="searchform-container">
+                    <h2>
+                        {{advertiseSentense}}
+                    </h2>
+                    <!-- select form start -->
+                    <form id="searchForm" class="searchform" @submit.prevent="">
+                        <fieldset class="home-form-city">
+                            <legend> City </legend>
+                                <select name="selectcity" id="citySelect" v-model="cityName">
+                                    <option value="">--Please choose an option--</option>
+                                    <option v-for="city in cities" :key="city.id"
+                                    :value=city.name>{{city.name}}</option>
+                                </select>
+                        </fieldset>
+                        <fieldset class="home-form-date">
+                            <legend> Date </legend>
+                            <label for="datecheck">Check-in</label>
+                            <span id="start_date_prompt">
+                                <input type="date" name="dateofcheckin" v-model="checkin">
+                            </span>
+                            <label for="datecheck">Check-out</label>
+                            <span id="end_date_prompt">
+                                <input type="date" name="dateofcheckout" v-model="checkout">
+                            </span>
+                        </fieldset>
+                        <fieldset class="home-form-guest">
+                            <legend> Other operations </legend>
+                                <i ondragend=true class="iconfont icon-iconfonticon02"
+                                   @click="addGuest" 
+                                ></i>
+                                <span>Guest:</span><input class="guest-number" v-model="guestNumber"/>
+                                <i class="iconfont icon-jianhao1"
+                                    @click="minusGuest"
+                                ></i>
+                                
+                                <span class="home-form-price">Price:</span>
+                                <select name="selectcity" class="home-form-select-price" v-model="price">
+                                    <option value="">--Price selected--</option>
+                                    <option v-for="price in priceList" :key="price.id"
+                                    :value=price.name>{{price.name}}</option>
+                                </select>
+                        </fieldset>
+                        <br><br>
+                        <input type="submit" value="Search" @click="submitSearch"/>
+                    </form>
+                    <!-- select form end -->
+                </div>
+            </div>
+        </section>
+    <!-- search form end-->
+</div>
+
+
+
+<!-- javascript start -->
+<!-- vue javascript famework -->
+<!-- jquery -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- axios ajax request -->
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!-- import nav bar component -->
+<script src='../components/headerNavbar/headerNavBar.js'></script>
+<script src='../components/index/searchpage.js'></script>
+<script type="text/javascript">
+window.onload = function (){ 
+    //vue javascript framework
+    new Vue({
+        el:"#app",
+        data(){
+            return{
+                isLoginStatus:"Not logged in",
+                banner:"Home",
+                everyWhere:"Everywhere",
+                advertiseSentense:"Where are you going?",
+                cityName:"",
+                cities:[
+                    {id:0,name:"Sydney"},
+                    {id:1,name:"Melbourne"},
+                    {id:2,name:"Hobart"},
+                ],
+                guestNumber:0,
+                checkin:'',
+                checkout:'',
+                price:'',
+                priceList:[
+                    {id:0,name:"high-low"},
+                    {id:1,name:"low-high"},
+                ],
+                isPopupShow:false,
+                accommonList:[],
+                array:[],
+            }
+        },
+        components:{
+            SearchPopup
+        },
+        mounted(){
+            if(this.getSessionStorage(`client`)){
+				this.getSessionStorage(`client`)? this.isLoginStatus=JSON.parse(this.getSessionStorage(`client`)):this.isLoginStatus="Not logged in";
+			}
+        },
+        methods:{
+            addGuest(){
+                this.guestNumber+=1;
+            },
+            minusGuest(){
+                this.guestNumber-=1;
+                if(this.guestNumber < 0){
+                    this.guestNumber = 0;
+                }
+            },
+            getSessionStorage(value){
+			    return window.sessionStorage.getItem(value)
+			},
+            submitSearch(){
+                const {cityName,guestNumber,price,checkin,checkout} = this;
+                if(cityName&&guestNumber&&price&&checkin&&checkout){
+                    //request accommodationList
+                    axios('http://localhost/502webdeveloper/backend/api/accommodation.php')
+                        .then(res=>{
+                            this.accommonList = res.data.accommondations
+                    })               
+                    this.isPopupShow=!this.isPopupShow
+                }else{
+                    alert(`complete search form`);
+                }
+            },
+            popClose(){
+                this.isPopupShow=!this.isPopupShow
+                this.array=[];
+                this.accommonList=[];
+            }
+        },
+        computed:{
+                //search function and filter and sort price
+                listFilter(){
+                    let arr =[];
+                    let priceSort;
+                    this.price=='high-low'? priceSort = 1 :priceSort = 0;
+                    this.accommonList.forEach(item=>{
+                        if(this.cityName == item.cityname && this.guestNumber == item.guests){
+                            arr.push(item);
+                        }
+                    })
+                    //price sorting
+                    arr.sort((a,b)=>{
+                        if(priceSort){
+                            return Number(b.price) - Number(a.price);
+                        }else{
+                            return Number(a.price) - Number(b.price);
+                        }
+                    })
+                    return arr
+                }
+            }
+    })
+
+}
+
+</script>
+</body>
+</html>

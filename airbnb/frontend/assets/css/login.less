@@ -1,0 +1,123 @@
+
+/*login form start*/
+#app{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../image/bizhi.jpg);
+    background-size: cover;
+    background-position: center;
+    .app-container{
+        min-height: 100vh;
+        width: 100%;
+        .app-form{
+            position:fixed;
+            top:50%;
+            left:50%;
+            transform: translateX(-50%) translateY(-50%);
+            border-radius:20px;
+            background-color:rgba(0,0,0,.5);
+            box-shadow: 2px 2px 5px rgb(0 0 0 / 70%), -2px -2px 5px rgb(255 255 255 / 10%);
+            text-align: center;
+            width:500px;
+            height:550px;
+            padding:40px 40px;
+            .app-login-type{
+                position:fixed;
+                border:none;
+                height:40px;
+                width:110px;
+                top:10px;
+                left:10px;
+                border-radius:10px;
+                font-size:16px;
+                font-weight: 600;
+            }
+            .app-user-info,.app-user-pwd{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                margin-top:50px;
+                input{
+                    border:none;
+                    height:38px;
+                    width:310px;
+                    font-weight: 400;
+                    margin-left:5px;
+                    padding:0 0 0 10px;
+                }
+                p{
+                    font-size:20px;
+                    color:white;
+                    font-weight: 600;
+                }
+            }
+            .app-email-form-mention,.app-pwd-form-mention{
+                width:360px;
+                height:20px;
+                position:relative;
+                left:50%;
+                transform:translateX(-50%);
+                top:10px;
+                font-size:20px;
+                color:#fd454d;
+            }
+            .app-user-login{
+                .app-user-login-button{
+                    font-size:20px;
+                    width:90%;
+                    height: 40px;
+                    margin-top:60px;
+                    cursor: pointer;
+                    border-radius:5px;
+                    font-weight: 600;
+                }
+            }
+            .app-user-toregister{
+                margin-top:30px;
+                p{
+                    font-size:16px;
+                    color:white;
+                    font-weight: 600;
+                }
+                a{
+                    text-decoration:none;
+                    color:orange;
+                }
+            }
+            .app-other-corporators{
+                margin-top:30px;
+                display: flex;
+                justify-content:space-around;
+                a{
+                    text-decoration: none;
+                }
+                .iconfont{
+                    border:none;
+                    font-size: 50px;
+                }
+                .icon-facebook{
+                    color:#4971b1;
+                }
+                .icon-google{
+                    color:#329d4f;
+                }
+                .icon-github{
+                    color:#5b5b5b;
+                }
+                .icon-23{
+                    color:#339dcf;
+                }
+            }
+        }
+        .app-form-mention{
+            font-size:20px;
+            width: 100%;
+            font-weight:700;
+            color:#ccc;
+            text-align:center;
+            margin-top: 25px;
+            span{
+                color:orange;
+            }
+        }
+    }
+}
+/*login form end*/

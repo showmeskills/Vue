@@ -1,0 +1,857 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#app {
+  margin-top: -20px;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../image/bizhi.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#app .app-logo {
+  width: 100px;
+  height: 40px;
+  margin-left: 10px;
+  color: #fff;
+}
+#app .app-logo .app-avatar {
+  position: fixed;
+  top: 40;
+  width: 300px;
+  font-size: 20px;
+  font-weight: 600;
+}
+#app .app-logo .app-avatar .icon-weidenglutouxiang {
+  font-size: 40px;
+  font-weight: 700;
+  color: #ccc;
+}
+#app .app-logo .app-avatar .icon-arrow_down_full {
+  color: #fff;
+  cursor: pointer;
+}
+#app .app-logo .app-avatar .app-controller-pad {
+  position: fixed;
+}
+#app .app-logo .app-avatar .app-controller-pad .app-controller-logout {
+  width: 80px;
+  height: 30px;
+  background-color: #323232;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+#app .app-logo .app-avatar .app-controller-pad .app-controller-logout.active {
+  background-color: #454545;
+  transition: all 0.4s;
+}
+#app .app-admin-container {
+  width: 65vw;
+  height: 80vh;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), -2px -2px 5px rgba(255, 255, 255, 0.1);
+  margin: auto;
+  position: relative;
+}
+#app .app-admin-container .app-admin-sider-bar {
+  width: 15vw;
+  height: 80vh;
+  background-color: #323232;
+  border-top-left-radius: 15px;
+}
+#app .app-admin-container .app-admin-sider-bar .app-admin-sider-bar-container {
+  list-style: none;
+  border-top-left-radius: 15px;
+}
+#app .app-admin-container .app-admin-sider-bar .app-admin-sider-bar-container .app-admin-sider-bar-li {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  width: 100%;
+  height: 6vh;
+  border-bottom: 1px solid #0c0c0c;
+  line-height: 6vh;
+  font-size: 20px;
+  font-weight: bold;
+  color: #6b6b6b;
+  transition: all 0.4s;
+  padding-left: 25px;
+  cursor: pointer;
+}
+#app .app-admin-container .app-admin-sider-bar .app-admin-sider-bar-container .app-admin-sider-bar-li.hoverActive {
+  background-color: #454545;
+  color: #fff;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-accommodations {
+  overflow: scroll;
+}
+#app .app-admin-container .app-admin-doarddash-comments {
+  overflow: scroll;
+}
+#app .app-admin-container .app-admin-doarddash-user-info {
+  overflow: scroll;
+}
+#app .app-admin-container .app-admin-doarddash-booked {
+  overflow: scroll;
+}
+#app .app-admin-container .app-admin-doarddash-email-box {
+  overflow: scroll;
+}
+#app .app-admin-container .app-admin-doarddash-panel,
+#app .app-admin-container .app-admin-doarddash-check-in,
+#app .app-admin-container .app-admin-doarddash-check-out,
+#app .app-admin-container .app-admin-doarddash-booked,
+#app .app-admin-container .app-admin-doarddash-comments,
+#app .app-admin-container .app-admin-doarddash-user-info,
+#app .app-admin-container .app-admin-doarddash-email-box,
+#app .app-admin-container .app-admin-doarddash-accommodations {
+  width: 50vw;
+  height: 80vh;
+  position: absolute;
+  top: 0;
+  left: 15vw;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../image/Airbnb_Bali_Bamboo_House.jpg');
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash {
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-email-container,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-email-container,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-email-container,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-email-container,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-email-container,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-email-container,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-email-container,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-email-container {
+  padding: 10px 10px;
+  height: 100vh;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-email-container .app-admin-doarddash-email-li,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-email-container .app-admin-doarddash-email-li,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-email-container .app-admin-doarddash-email-li,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-email-container .app-admin-doarddash-email-li,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-email-container .app-admin-doarddash-email-li,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-email-container .app-admin-doarddash-email-li,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-email-container .app-admin-doarddash-email-li,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-email-container .app-admin-doarddash-email-li {
+  width: 35vw;
+  height: 40px;
+  background-color: #323232;
+  border-bottom: 1px solid #0c0c0c;
+  border-radius: 10px;
+  line-height: 40px;
+  margin-top: 2px;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.4s;
+  color: #6b6b6b;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-email-container .app-admin-doarddash-email-li.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-email-container .app-admin-doarddash-email-li.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-email-container .app-admin-doarddash-email-li.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-email-container .app-admin-doarddash-email-li.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-email-container .app-admin-doarddash-email-li.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-email-container .app-admin-doarddash-email-li.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-email-container .app-admin-doarddash-email-li.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-email-container .app-admin-doarddash-email-li.active {
+  background-color: #454545;
+  color: #fff;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p {
+  margin-left: 15px;
+  color: #fff;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p.readAcitve,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p.readAcitve,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p.readAcitve,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p.readAcitve,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p.readAcitve,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p.readAcitve,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p.readAcitve,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content p.readAcitve {
+  color: red;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  border-radius: 15px;
+  background-color: orangered;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-email-container .app-admin-doarddash-email-li .app-admin-doarddash-email-content .app-admin-doarddash-email-btn.active {
+  background-color: #f42f3d;
+  color: white;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-booked-container,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-booked-container,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-booked-container,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-booked-container,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-booked-container,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-booked-container,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-booked-container,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-booked-container {
+  padding: 10px 10px;
+  height: 100vh;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li {
+  width: 35vw;
+  height: 150px;
+  background-color: #323232;
+  border-bottom: 1px solid #0c0c0c;
+  border-radius: 10px;
+  line-height: 40px;
+  margin-top: 2px;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.4s;
+  color: #6b6b6b;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li.liActive,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li.liActive,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li.liActive,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li.liActive,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li.liActive,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li.liActive,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li.liActive,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-booked-container .app-admin-doarddash-booked-li.liActive {
+  background-color: #454545;
+  color: #fff;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p {
+  color: #6b6b6b;
+  font-size: 16px;
+  font-weight: bold;
+  width: 310px;
+  height: 15px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-booked-container .app-admin-doarddash-booked-content p.active {
+  color: #fff;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-comments-container,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-comments-container,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-comments-container,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-comments-container,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-comments-container,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-comments-container,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-comments-container,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-comments-container {
+  padding: 10px 10px;
+  height: 100vh;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li {
+  width: 45vw;
+  height: 100px;
+  background-color: #323232;
+  border-bottom: 1px solid #0c0c0c;
+  border-radius: 10px;
+  line-height: 40px;
+  margin-top: 2px;
+  display: flex;
+  justify-content: start;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li.active {
+  background-color: #454545;
+  color: #fff;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-img img,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-img img,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-img img,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-img img,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-img img,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-img img,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-img img,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-img img {
+  width: 100px;
+  height: 100px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent {
+  width: 280px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p {
+  color: #6b6b6b;
+  font-size: 16px;
+  font-weight: bold;
+  height: 8px;
+  width: 310px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .table-comments-conntent p.active {
+  color: #fff;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  border-radius: 15px;
+  background-color: orangered;
+  font-size: 16px;
+  font-weight: bold;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-comments-container .app-admin-doarddash-comments-li .app-admin-doarddash-comments-btn.active {
+  background-color: #f42f3d;
+  color: white;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage {
+  position: fixed;
+  width: 65vw;
+  height: 81vh;
+  top: 44.4%;
+  left: 50%;
+  background-color: #323232;
+  transform: translateX(-50%) translateY(-50%);
+  color: white;
+  overflow: scroll;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .icon-yuanxingdacha {
+  position: fixed;
+  right: 0px;
+  top: -10px;
+  color: white;
+  font-size: 50px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form {
+  width: 500px;
+  height: 100vh;
+  margin: auto;
+  padding: 0 40px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-editpage .app-admin-doarddash-user-info-editpage-form input {
+  color: #323232;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container {
+  width: 50%;
+  height: 100vh;
+  list-style: none;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli {
+  height: 100px;
+  background-color: #323232;
+  border-bottom: 1px solid #0c0c0c;
+  border-radius: 10px;
+  line-height: 40px;
+  margin-top: 2px;
+  transition: all 0.4s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli.active {
+  background-color: #454545;
+  color: #fff;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p {
+  color: #6b6b6b;
+  font-size: 16px;
+  font-weight: bold;
+  height: 8px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-boarddash-user-container p.active {
+  color: #fff;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  border-radius: 15px;
+  background-color: orangered;
+  font-size: 16px;
+  font-weight: bold;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-cli-container .app-admin-boarddash-user-info-cli .app-admin-doarddash-use-cli-btn-container .app-admin-doarddash-use-cli-btn.active {
+  background-color: #f42f3d;
+  color: white;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container {
+  width: 50%;
+  height: 100vh;
+  list-style: none;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host {
+  height: 100px;
+  background-color: #323232;
+  border-bottom: 1px solid #0c0c0c;
+  border-radius: 10px;
+  line-height: 40px;
+  margin-top: 2px;
+  transition: all 0.4s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host.active {
+  background-color: #454545;
+  color: #fff;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p {
+  color: #6b6b6b;
+  font-size: 16px;
+  font-weight: bold;
+  height: 8px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-boarddash-host-container p.active {
+  color: #fff;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  border-radius: 15px;
+  background-color: orangered;
+  font-size: 16px;
+  font-weight: bold;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-user-info-container .app-admin-doarddash-user-info-div .app-admin-doarddash-user-info-host-container .app-admin-boarddash-user-info-host .app-admin-doarddash-use-host-btn-container .app-admin-doarddash-use-host-btn.active {
+  background-color: #f42f3d;
+  color: white;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-container,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-container,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-container,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-container,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-container,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-container,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-container,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-container {
+  padding: 10px 10px;
+  height: 100vh;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li {
+  width: 35vw;
+  height: 40px;
+  background-color: #323232;
+  border-bottom: 1px solid #0c0c0c;
+  border-radius: 10px;
+  line-height: 40px;
+  margin-top: 2px;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li.liActive,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li.liActive,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li.liActive,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li.liActive,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li.liActive,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li.liActive,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li.liActive,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li.liActive {
+  background-color: #454545;
+  color: #fff;
+  transition: all 0.4s;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name {
+  color: #6b6b6b;
+  font-size: 16px;
+  font-weight: bold;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-name.active {
+  color: #fff;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status {
+  width: 100px;
+  height: 40px;
+  background-color: palegreen;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 15px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-status.active {
+  background-color: orange;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  border-radius: 15px;
+  background-color: orangered;
+  font-size: 16px;
+  font-weight: bold;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn.active,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn.active,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn.active,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn.active,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn.active,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn.active,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn.active,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-container .app-admin-doarddash-accommodations-li .app-admin-doarddash-accommodations-btn.active {
+  background-color: #f42f3d;
+  color: white;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-editpage,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-editpage,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-editpage,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-editpage,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-editpage,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-editpage,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-editpage,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-editpage {
+  position: fixed;
+  width: 65vw;
+  height: 81vh;
+  top: 44.4%;
+  left: 50%;
+  background-color: #323232;
+  transform: translateX(-50%) translateY(-50%);
+  color: white;
+  overflow: scroll;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-editpage .icon-yuanxingdacha,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-editpage .icon-yuanxingdacha {
+  position: fixed;
+  right: 0px;
+  top: -10px;
+  color: white;
+  font-size: 50px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form {
+  width: 500px;
+  height: 100vh;
+  margin: auto;
+  padding: 0 40px;
+}
+#app .app-admin-container .app-admin-doarddash-panel .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-check-in .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-check-out .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-booked .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-comments .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-user-info .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-email-box .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form input,
+#app .app-admin-container .app-admin-doarddash-accommodations .app-admin-doarddash-accommodations-editpage .app-admin-doarddash-accommodations-editpage-form input {
+  color: #323232;
+}

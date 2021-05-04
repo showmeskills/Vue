@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <!-- iconfont link -->
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2518208_qopnu3t66zp.css">
+    <title>Memeber Login</title>
+</head>
+
+<body>
+<section id="app">
+    <!-- header start -->
+    <!-- navigation bar -->
+       <header-nav-bar :status=isLoginStatus></Header-nav-bar>
+    <!-- header start -->
+    <!-- login/register form start-->
+        <div class="app-container">
+            <form class="app-form" @submit.prevent="">
+                <select class="app-login-type" v-model="selectValue">
+                    <option value="">No choose</option>
+                    <option v-for="data in selectType" :key="data.id">
+                        {{data.type}}
+                    </option>
+                </select>
+                <div class="app-user-info">
+                    <p>User-Email:</p>
+                    <input type="text" v-model="email" placeholder="Enter your email address" />
+                </div>
+                <div class="app-pwd-form-mention">
+                    <p v-show="isCheckEmail">*the email format is incorrect</p>
+                </div>
+                <div class="app-user-pwd">
+                    <p>Password:</span>
+                        <input type="password" v-model="password" placeholder="Enter your password" />
+                </div>
+                <div class="app-pwd-form-mention">
+                    <p v-show="isCheckPwd">*{{responseInfo}}</p>
+                </div>
+                <div class="app-user-login">
+                    <button class="app-user-login-button" @click="onLogin">Login</button>
+                </div>
+                <div class="app-user-toregister">
+                    <p>if you don't have an account link to</span>
+                        <a href="./register.html">Register</a>
+                </div>
+                <div class="app-other-corporators">
+                    <a v-for="item in otherLinks" :key='item.id' :href='item.link'>
+                        <i class="iconfont" :class='item.iName'></i>
+                    </a>
+                </div>
+                <p class="app-form-mention"><span>*</span>Internal workers use self-account <span>No Selected</span></p>
+            </form>
+        </div>
+    </section>
+    <!-- login/register form end-->
+
+    <!-- import vue javascript framework -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- import ajax request -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <!-- import navbar component -->
+    <script src='../components/headerNavbar/headerNavBar.js'></script>
+    <script type="text/javascript">
+        (window.onload = function () {      
+            // console.log(document.cookie.split(";"));//获取session_start();
+           
+            //vue 
+            new Vue({
+                el: "#app",
+                data() {
+                    return {
+                        otherLinks: [
+                            { id: 0, link: 'https://www.facebook.com/', iName: 'icon-facebook' },
+                            { id: 1, link: 'https://www.google.com.au/', iName: 'icon-google' },
+                            { id: 2, link: 'https://github.com/', iName: 'icon-github' },
+                            { id: 3, link: 'https://www.instagram.com/', iName: 'icon-23' }
+                        ],
+                        selectType: [
+                            { id: 0, type: "client" },
+                            { id: 1, type: "host" }
+                        ],
+                        selectValue: '',
+                        email:'',
+                        isCheckEmail:false,
+                        password:'',
+                        isCheckPwd:false,
+                        responseInfo:"",
+                        isLoginStatus: "Not logged in",
+                    }
+                },
+                mounted(){
+                    if(this.getSessionStorage(`client`)){
+                    this.getSessionStorage(`client`)? this.isLoginStatus=JSON.parse(this.getSessionStorage(`client`)):this.isLoginStatus="Not logged in";
+                }
+                },
+                //check email and password formart
+                watch:{
+                    email: {
+                        handler(value) {
+                            const emailReg = /\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}/
+                            if (emailReg.test(value.trim()) === false) {
+                                this.isCheckEmail = true;
+                            } else {
+                                this.isCheckEmail = false;
+                            }
+                        }
+                    },
+                    password: {
+                        handler(value) {
+                            const pwdReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,12}$/
+                            if (pwdReg.test(value.trim()) === false) {
+                                this.isCheckPwd = true;
+                                this.responseInfo="the password is wrong format!!!"
+                            } else {
+                                this.isCheckPwd = false;
+                            }
+                        }
+                    },
+                },
+                //
+                methods:{
+                    onLogin(){
+                        const {toClientLogin,toHostLogin,toAdminLogin,selectValue,email,password,isCheckEmail,isCheckPwd} = this;
+                        if(selectValue === ""){
+                            if(email&&password&&isCheckEmail===false&&isCheckPwd===false){
+                                toAdminLogin(email,password);
+                            }else{
+                                alert("please complete form")
+                            }
+                        }else if(selectValue === "client"){
+                            if(email&&password&&isCheckEmail===false&&isCheckPwd===false){
+                                toClientLogin(email,password);
+                            }else{
+                                alert("please complete form")
+                            }
+                        }else if(selectValue === "host"){
+                            if(email&&password&&isCheckEmail===false&&isCheckPwd===false){
+                                toHostLogin(email,password);
+                            }else{
+                                alert("please complete form")
+                            }
+                        }
+                    },
+                    toClientLogin(email,password){
+                        var params = new URLSearchParams();
+						params.append('email', email.trim());  
+						params.append('password', password.trim());
+                        axios.post('http://localhost/502webdeveloper/backend/api/clientlogin.php',
+                            params
+                        ).then(res=>{
+                            if(res.data.client.length>0&&res.data.status===0){
+                                this.otherSessionStorage(`client`,res.data.client[0].firstname);
+                                window.sessionStorage.setItem(`clientInfo`,JSON.stringify(res.data.client));
+                                window.location.href="./index.html"
+                                alert(`${res.data.message}Welcome come back:${res.data.client[0].firstname}`);
+                            }else if(res.data.client.length==0){
+                                alert('please enter your relative account and pwd')
+                            }
+                        })
+                    },
+                    toHostLogin(email,password){
+                        var params = new URLSearchParams();
+						params.append('email', email.trim());  
+						params.append('password', password.trim());
+                        axios.post('http://localhost/502webdeveloper/backend/api/hostlogin.php',
+                            params
+                        ).then(res=>{
+                            if(res.data.host.length>0&&res.data.status===0){
+                                this.otherSessionStorage(`host`,res.data.host[0].firstname);
+                                window.sessionStorage.setItem(`hostInfo`,JSON.stringify(res.data.host));          
+                                window.location.href="./hostpanel.html"
+                                alert(`${res.data.message}Welcome come back:${res.data.host[0].firstname}`);
+                            }else if(res.data.host.length==0){
+                                alert('please enter your relative role account and pwd')
+                            }
+                        })
+                    },
+                    //admin login function
+                    toAdminLogin(email,password){
+                        var params = new URLSearchParams();
+						params.append('email', email.trim());  
+						params.append('password', password.trim());  
+						axios.post('http://localhost/502webdeveloper/backend/api/adminlogin.php',
+                            params
+                        ).then(res=>{
+                           
+                            if(res.data.admin.length>0&&res.data.status===0){
+                                this.setSessionStorage(res.data.admin[0].username);
+                                window.location.href="./admin.html"
+                                alert(`${res.data.message}Welcome come back:${res.data.admin[0].username}`);
+                            }else{
+                                this.isCheckPwd = true;
+                                this.responseInfo="the email or password are incorrect!!!";
+                            }
+                        });
+                    },
+                    //set admin login session
+                    setSessionStorage(username){
+                        window.sessionStorage.setItem(username, JSON.stringify(`${username}`));
+                    },
+                    otherSessionStorage(title,name){
+                        window.sessionStorage.setItem(title, JSON.stringify(`${name}`));
+                    },
+                    getSessionStorage(value){
+                        return window.sessionStorage.getItem(value)
+                    },
+                }
+            })
+        })
+    </script>
+</body>
+</html>

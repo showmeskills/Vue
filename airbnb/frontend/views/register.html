@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/register.css">
+    <!-- iconfont link -->
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2518208_qopnu3t66zp.css">
+    <title>Memeber Login</title>
+    <title>Register Page</title>
+</head>
+
+<body>
+    <section id="app">
+        <!-- header start -->
+        <!-- navigation bar -->
+        <header-nav-bar :status=isLoginStatus></Header-nav-bar>
+        <!-- header start -->
+
+        <!-- login/register form start-->
+        <div class="app-container">
+            <form class="app-register-form" @submit.prevent>
+                <select class="app-register-type" v-model="selectValue">
+                    <option value="">No choose</option>
+                    <option v-for="data in selectType" :key="data.id">
+                        {{data.type}}
+                    </option>
+                </select>
+                <div class="app-register-firstname">
+                    <p>Firstname:</p>
+                    <input type="text" v-model="firstname" placeholder="Enter your firstname" />
+                </div>
+                <div class="app-email-register-mention"></div>
+                <div class="app-register-lastname">
+                    <p>Lastname:</p>
+                    <input type="text" v-model="lastname" placeholder="Enter your lastname" />
+                </div>
+                <div class="app-email-register-mention"></div>
+                <div class="app-register-email">
+                    <p>Email:</p>
+                    <input type="text" v-model="checkEmail" placeholder="Enter your email address"  />
+                </div>
+                <div class="app-email-register-mention">
+                    <p v-show="isEmail">*the email format is not correct</p>
+                </div>
+                <div class="app-register-pwd">
+                    <p>Password:</p>
+                    <input type="password" placeholder="Enter your password" v-model="checkPwd" />
+                </div>
+                <div class="app-pwd-register-mention">
+                    <p v-show="isPwd">*the passwords have to include 6-12 chars,at least one Upper and Lower case</p>
+                </div>
+                <div class="app-register-repwd">
+                    <p>Password:</p>
+                    <input type="password" name="password" placeholder="Confirm your password"
+                        v-model="doubleCheckPwd" />
+                </div>
+                <div class="app-pwd-register-mention">
+                    <p v-show="isDoubleCheckPwd">*the password is inconsistent</p>
+                </div>
+                <!-- abn -->
+                <div class="app-register-host-abn" v-show="isShowABN">
+                    <p>ABN:</p>
+                    <input type="text" placeholder="Enter your ABN" v-model="hostABN"/>
+                </div>
+                <div class="app-register-host-abn-mention">
+                    <p v-show="isCheckABN">*ABN is not correct,e.g ABN1234567 fomartABN with only 7 numbers</p>
+                </div>
+                <div class="app-user-register">
+                    <input type="submit" value="Register" @click="onRegister">
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- login/register form end-->
+
+
+    <!-- import vue javascript framework -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- ajax request -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src='../components/headerNavbar/headerNavBar.js'></script>
+    <script type="text/javascript">
+        (window.onload = function () {
+            //new Vue
+            new Vue({
+                el: "#app",
+                data() {
+                    //the definition of data
+                    return {
+                        selectType: [
+                            { id: 0, type: "client" },
+                            { id: 1, type: "host" }
+                        ],
+                        selectValue: '',
+                        isShowABN: false,
+                        checkEmail: '',
+                        isEmail: false,
+                        checkPwd: '',
+                        isPwd: false,
+                        doubleCheckPwd: '',
+                        isDoubleCheckPwd: false,
+                        isLoginStatus: "Not logged in",
+                        hostABN:'',
+                        isCheckABN:false,
+                        firstname:'',
+                        lastname:'',
+                    }
+                },
+                //check is host or client login
+                updated() {
+                    this.selectValue === "host" ? this.isShowABN = true : this.isShowABN = false;
+                },
+                //watch email format
+                watch: {
+                    checkEmail: {
+                        handler(value) {
+                            const emailReg = /\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}/
+                            if (emailReg.test(value.trim()) === false) {
+                                this.isEmail = true
+                            } else {
+                                this.isEmail = false;
+                            }
+                        }
+                    },
+                    //check password format
+                    checkPwd: {
+                        handler(value) {
+                            const pwdReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,12}$/
+                            if (pwdReg.test(value.trim()) === false) {
+                                this.isPwd = true;
+                            } else {
+                                this.isPwd = false;
+                            }
+                        }
+                    },
+                    //double check password
+                    doubleCheckPwd: {
+                        handler(value) {
+                            if (value.trim() !== this.checkPwd) {
+                                this.isDoubleCheckPwd = true;
+                            } else {
+                                this.isDoubleCheckPwd = false;
+                            }
+                        }
+                    },
+                    //check ABN
+                    hostABN:{
+                        handler(value){
+                        const abnReg = /^ABN[0-9]{7}$/  
+                           if(abnReg.test(value.trim()) === false){
+                            this.isCheckABN = true;
+                           }else{
+                            this.isCheckABN = false;
+                           }
+                        }
+                    }
+                },
+                methods:{
+                    //register function check all information that is correct
+                    onRegister(){
+                        const {
+                            selectValue,
+                            firstname,
+                            lastname,
+                            checkPwd,
+                            doubleCheckPwd,
+                            checkEmail,
+                            hostABN,
+                            isCheckABN,
+                            isEmail,
+                            isPwd,
+                            isDoubleCheckPwd,
+                            toClientRegister,
+                            toHostRegister
+                        } = this;
+                        if(!selectValue){
+                            alert("you have to select one role");
+                        }else if(selectValue ==="client" && isEmail === false && isPwd === false && isDoubleCheckPwd === false){
+                            if(!firstname&&!lastname&&!checkPwd&&!doubleCheckPwd&&!checkEmail){
+                                alert("please completed all info")
+                            }else{
+                                toClientRegister();
+                            }
+                        }else if(selectValue ==="host" && isEmail === false && isPwd === false && isDoubleCheckPwd === false && isCheckABN === false){
+                            if(hostABN&&firstname&&lastname&&checkPwd&&doubleCheckPwd&&checkEmail){
+                                toHostRegister()
+                            }else{
+                                alert("please completed all info")
+                            }
+                        }
+                        
+                       
+                    },
+                    //for client registeration function
+                    toClientRegister(){
+                        const {firstname,lastname,checkPwd,doubleCheckPwd,checkEmail} =this;
+                        var params = new URLSearchParams();
+						params.append('firstname', firstname);  
+						params.append('lastname', lastname);  
+						params.append('checkPwd', checkPwd);  
+						params.append('doubleCheckPwd', doubleCheckPwd);  
+						params.append('checkEmail', checkEmail);  
+                        axios.post("http://localhost/502webdeveloper/backend/api/registerclient.php",params)
+                        .then(res=>{
+                            const error = res.data.error;
+                            const status = res.data.status;
+                            const message = res.data.message;
+                            const confirm = window.confirm(`${message},you can log your account`);
+                            if(error === false && status === 0){
+                                if(confirm){
+                                    window.location.href="./login.html"
+                                }
+                            }
+                        })
+                    },
+                    toHostRegister(){
+                        const {firstname,lastname,checkPwd,doubleCheckPwd,checkEmail,hostABN} =this;
+                        var params = new URLSearchParams();
+						params.append('firstname', firstname);  
+						params.append('lastname', lastname);  
+						params.append('checkPwd', checkPwd);  
+						params.append('doubleCheckPwd', doubleCheckPwd);  
+						params.append('checkEmail', checkEmail);  
+						params.append('hostABN', hostABN);
+                        axios.post("http://localhost/502webdeveloper/backend/api/registerhost.php",params)
+                        .then(res=>{
+                            const error = res.data.error;
+                            const status = res.data.status;
+                            const message = res.data.message;
+                            const confirm = window.confirm(`${message},you can log your account`);
+                            if(error === false && status === 0){
+                                if(confirm){
+                                    window.location.href="./login.html"
+                                }
+                            }
+                            console.log(res);
+                        })  
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

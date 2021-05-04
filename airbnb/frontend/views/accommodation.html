@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/home.css">
+	<link rel="stylesheet" href="../assets/css/mel.css">
+	<link rel="stylesheet" href="../assets/css/accommodation.css">
+ 	<!-- iconfont link -->
+ 	<link rel="stylesheet" href="http://at.alicdn.com/t/font_2518208_qopnu3t66zp.css">
+	<title>Accommodation</title>
+</head>
+
+<body>
+	<div id="app">
+		<!-- header start -->
+		<!-- navigation bar -->
+		<header-nav-bar :status=isLoginStatus></Header-nav-bar>
+		<!-- header start -->
+
+		<!-- page title start-->
+		<div class="title" id="title">
+			<h1>{{theme}}</h1>
+		</div>
+		<!-- page title end-->
+
+		<!-- accommodation lists start -->
+		<div class="table-container">
+			<!-- insert render table -->
+			<ul class="table-wrapper">
+				<li class="table-wrapper-li" v-for='accom in accommodationList' :key="accom.id" style="cursor:pointer">
+					<div class="table-image-container">
+						<img :src="accom.image" alt="Anglesea Riverside Motel" width="300" height="200">
+					</div>
+					<div class="table-introduction">
+						<h1 class="table-introduction-text">{{accom.apartmentname}}</h1>
+						<p class="table-introduction-text">address:{{accom.address}}</p>
+						<p class="table-introduction-text">{{accom.guests}} Guests | {{accom.rooms}} bedrooms
+							| {{accom.beds}} beds</p>
+						<p class="table-introduction-text">{{accom.kitchen?"Kitchen":""}} | {{accom.freeparking?"Free parking":""}} |
+							{{accom.pets?"Pets Friendly" : "Not Pets"}}
+							{{accom.smoking?"Smoking free" : "Smoking"}}
+						</p>
+						<p class="table-introduction-text">Location: {{accom.cityname}}</p>
+						<p class="table-introduction-text">Price:${{accom.price}}AU</p>
+						<p class="table-introduction-status"
+							:class= "accom.status == 'false'? 'active' :'' "
+						>{{accom.status=='true'?"check-out":"check-in"}}</p>
+						<div class="table-btn">
+							<button class="btn-bookings" @click="checkIsLogin">Books</button>
+							<button class="btn-comments" @click="requestComments(accom.apartmentname)">View</button>
+						</div>
+					</div>
+				</li> 
+			</ul>
+			<!-- comments components start with amination -->
+				<comments v-show="isShow" :comments="commentsList" :handle-show="handleShow"></comments>
+			<!-- comments components end with amination -->
+		</div>
+		<!-- accommodation lists end -->
+	</div>
+
+	<!-- axios ajax request -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+	<!-- vue javascript -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- import nav bar components -->
+	<script src="../components/headerNavbar/headerNavBar.js"></script>
+	<!-- import comments components -->
+	<script src='../components/accommodation/accommodationComments.js'></script>
+	<script type="text/javascript">
+		window.onload = function () {
+				//new Vue to control virtual DOM
+				const vm = new Vue({
+					el: "#app",
+					data() {
+						return {
+							// definition variables
+							theme: "Accommodation",
+							isLoginStatus:"Not logged in",
+							accommodationList:[],
+							commentsList:[],
+							isShow:false,
+							isLogin:false,
+						}
+					},
+					mounted() {
+						//request accommodationList
+						axios('http://localhost/502webdeveloper/backend/api/accommodation.php')
+						.then(res=>{
+							this.accommodationList = res.data.accommondations
+						})
+						
+						if(this.getSessionStorage(`client`)){
+							this.isLogin = !this.isLogin;
+                    		this.getSessionStorage(`client`)? this.isLoginStatus=JSON.parse(this.getSessionStorage(`client`)):this.isLoginStatus="Not logged in";
+						}
+
+					},
+					methods:{
+						//request the data of comments from db;
+						requestComments(apartmentname){
+							//form data to request form;
+							var params = new URLSearchParams();
+							params.append('info', apartmentname);  
+							axios.post('http://localhost/502webdeveloper/backend/api/comments.php',params)
+							.then(res=>{
+								this.commentsList = res.data.comments
+							})
+							this.isShow = true;
+						},
+						//father component emit to son component
+						handleShow(){
+							this.isShow = !this.isShow
+						},
+						//is check user is logined in or not
+						checkIsLogin(){
+							if(!this.isLogin){
+								if(isConfirm = window.confirm("you aren\'t logged in, would you like to turn login?")){
+									window.location.href="./login.html"
+								}
+							}else{
+								window.location.href= './index.html'
+							}
+						},
+						getSessionStorage(value){
+							return window.sessionStorage.getItem(value)
+						}
+					}
+				});
+		}
+	</script>
+	<!-- javascript end -->
+</body>
+
+</html>

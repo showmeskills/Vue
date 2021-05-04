@@ -1,0 +1,98 @@
+#app {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../image/bizhi.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#app .app-container {
+  min-height: 100vh;
+  width: 100%;
+}
+#app .app-register-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), -2px -2px 5px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  width: 500px;
+  height: 550px;
+  padding: 40px 65px;
+}
+#app .app-register-form .app-register-type {
+  position: fixed;
+  border: none;
+  height: 40px;
+  width: 110px;
+  top: 10px;
+  left: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+#app .app-register-form .app-register-email,
+#app .app-register-form .app-register-firstname,
+#app .app-register-form .app-register-lastname,
+#app .app-register-form .app-register-pwd,
+#app .app-register-form .app-register-repwd,
+#app .app-register-form .app-register-host-abn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+#app .app-register-form .app-register-email input,
+#app .app-register-form .app-register-firstname input,
+#app .app-register-form .app-register-lastname input,
+#app .app-register-form .app-register-pwd input,
+#app .app-register-form .app-register-repwd input,
+#app .app-register-form .app-register-host-abn input {
+  border: none;
+  height: 38px;
+  width: 310px;
+  font-weight: 400;
+  margin-left: 5px;
+  padding: 0 0 0 10px;
+}
+#app .app-register-form .app-register-email p,
+#app .app-register-form .app-register-firstname p,
+#app .app-register-form .app-register-lastname p,
+#app .app-register-form .app-register-pwd p,
+#app .app-register-form .app-register-repwd p,
+#app .app-register-form .app-register-host-abn p {
+  font-size: 20px;
+  color: white;
+  font-weight: 600;
+}
+#app .app-register-form .app-email-register-mention,
+#app .app-register-form .app-pwd-register-mention,
+#app .app-register-form .app-register-host-abn-mention {
+  width: 360px;
+  height: 15px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10px;
+  font-size: 12px;
+  color: #fd454d;
+  text-align: left;
+}
+#app .app-register-form .app-register-email p {
+  margin-right: 30px;
+}
+#app .app-register-form .app-register-host-abn {
+  margin-bottom: 20px;
+}
+#app .app-register-form .app-register-host-abn p {
+  margin-right: 35px;
+}
+#app .app-register-form .app-user-register input {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 40px;
+  cursor: pointer;
+}

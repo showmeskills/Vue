@@ -1,0 +1,506 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+#app{
+    margin-top:-20px;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../image/bizhi.jpg);
+    background-size: cover;
+    background-position: center;
+    // width:100%;
+    .app-logo{
+        width: 100px;
+        height: 40px;
+        margin-left:10px;
+        color:#fff;
+        .app-avatar{
+            position:fixed;
+            top:40;
+            width:300px;
+            font-size:20px;
+            font-weight: 600;
+            .icon-weidenglutouxiang{
+                font-size:40px;
+                font-weight: 700;
+                color:#ccc;
+            }
+            .icon-arrow_down_full{
+                color:#fff;
+                cursor: pointer;
+            }
+            .app-controller-pad{
+                position:fixed;
+                .app-controller-logout{
+                    width:80px;
+                    height:30px;
+                    background-color: #323232;
+                    border:none;
+                    font-size:16px;
+                    font-weight:600;
+                    margin-top:5px;
+                    color:#fff;
+                    cursor:pointer;
+                    transition:all 0.4s;
+                        &.active{
+                            background-color: #454545;
+                            transition:all 0.4s;
+                    }
+                }
+            }
+        }
+    }
+    .app-admin-container{
+        width:65vw;
+        height:80vh;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.1);
+        box-shadow: 2px 2px 5px rgb(0 0 0 / 70%), -2px -2px 5px rgb(255 255 255 / 10%);
+        margin:auto;
+        position:relative;
+        .app-admin-sider-bar{
+            width:15vw;
+            height:80vh;
+            background-color: #323232;
+            border-top-left-radius:15px;
+            .app-admin-sider-bar-container{
+                list-style: none;
+                border-top-left-radius:15px;
+                .app-admin-sider-bar-li{
+                    border-top-left-radius:15px;
+                    border-bottom-left-radius: 15px;
+                    width:100%;
+                    height:6vh;
+                    border-bottom:1px solid #0c0c0c;
+                    line-height: 6vh;
+                    font-size:20px;
+                    font-weight: bold;
+                    color:#6b6b6b;
+                    transition:all 0.4s;
+                    padding-left:25px;
+                    cursor: pointer;
+                    &.hoverActive{
+                        background-color: #454545;
+                        color:#fff;
+                        transition:all 0.4s;
+                    }
+                }
+            }
+        }
+        .app-admin-doarddash-accommodations{
+            overflow: scroll;
+        }
+        .app-admin-doarddash-comments{
+            overflow: scroll;
+        }
+        .app-admin-doarddash-user-info{
+            overflow: scroll;
+        }
+        .app-admin-doarddash-booked{
+            overflow: scroll;
+        }
+        .app-admin-doarddash-email-box{
+            overflow: scroll;
+        }
+        .app-admin-doarddash-panel,
+        .app-admin-doarddash-check-in,
+        .app-admin-doarddash-check-out,
+        .app-admin-doarddash-booked,
+        .app-admin-doarddash-comments,
+        .app-admin-doarddash-user-info,
+        .app-admin-doarddash-email-box,
+        .app-admin-doarddash-accommodations{
+            width:50vw;
+            height:80vh;
+            position:absolute;
+            top:0;
+            left:15vw;
+            border-top-right-radius:15px;
+            border-bottom-right-radius: 15px;
+            background-image:  linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('../image/Airbnb_Bali_Bamboo_House.jpg');
+            .app-admin-doarddash{
+                text-align:center;
+                color:white;
+                margin-top:10px;
+            }
+
+
+            //email box start
+            .app-admin-doarddash-email-container{
+                padding:10px 10px;
+                height:100vh;
+                .app-admin-doarddash-email-li{
+                    width:35vw;
+                    height:40px;
+                    background-color: #323232;
+                    border-bottom:1px solid #0c0c0c;
+                    border-radius:10px;
+                    line-height:40px;
+                    margin-top:2px;
+                    display:flex;
+                    justify-content:space-between;
+                    transition:all 0.4s;
+                    color:#6b6b6b;
+                    &.active{
+                        background-color: #454545;
+                        color:#fff;
+                        transition:all 0.4s;
+                    }
+                    .app-admin-doarddash-email-content{
+                        display:flex;
+                        justify-content:space-around;
+                        align-items: center;
+                        p{
+                            margin-left:15px;
+                            color:#fff;
+                            &.readAcitve{
+                                color:red;
+                            }
+                        }
+                        .app-admin-doarddash-email-btn{
+                            width:100px;
+                            height:40px;
+                            line-height:40px;
+                            border:none;
+                            border-radius:15px;
+                            background-color:orangered;
+                            font-size:16px;
+                            font-weight:bold;
+                            margin-left:15px;
+                             &.active{
+                                background-color: #f42f3d;
+                                color:white;
+                             }
+                        }
+                    }
+                }
+            }
+            //email box end
+
+            //booked start 
+            .app-admin-doarddash-booked-container{
+                padding:10px 10px;
+                height:100vh;
+                .app-admin-doarddash-booked-li{
+                    width:35vw;
+                    height:150px;
+                    background-color: #323232;
+                    border-bottom:1px solid #0c0c0c;
+                    border-radius:10px;
+                    line-height:40px;
+                    margin-top:2px;
+                    display:flex;
+                    justify-content:space-between;
+                    transition:all 0.4s;
+                    color:#6b6b6b;
+                    &.liActive{
+                        background-color: #454545;
+                        color:#fff;
+                        transition:all 0.4s;
+                    }
+                    
+                }
+                .app-admin-doarddash-booked-content{
+                    
+                    p{
+                        color:#6b6b6b;
+                        font-size:16px;
+                        font-weight:bold;
+                        width:310px;
+                        height:15px;
+                        &.active{
+                            color:#fff;
+                            transition:all 0.4s;
+                        }
+                    }
+                }
+            }
+            //booked end
+
+            //comments start
+            .app-admin-doarddash-comments-container{
+                padding:10px 10px;
+                height:100vh;
+                .app-admin-doarddash-comments-li{
+                    width:45vw;
+                    height:100px;
+                    background-color: #323232;
+                    border-bottom:1px solid #0c0c0c;
+                    border-radius:10px;
+                    line-height:40px;
+                    margin-top:2px;
+                    display:flex;
+                    justify-content:start;
+                    transition:all 0.4s;
+                    &.active{
+                        background-color: #454545;
+                        color:#fff;
+                        transition:all 0.4s;
+                    }
+                    .table-comments-img{
+                        img{
+                            width:100px;
+                            height:100px;
+                        }
+                    }
+                    .table-comments-conntent{
+                        width:280px;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        margin-left:10px;
+                        p{
+                            color:#6b6b6b;
+                            font-size:16px;
+                            font-weight:bold;
+                            height:8px;
+                            width:310px;
+                            &.active{
+                                color:#fff;
+                                transition:all 0.4s;
+                            }
+                        }
+                    }
+                    .app-admin-doarddash-comments-btn{
+                        width:100px;
+                        height:40px;
+                        line-height:40px;
+                        border:none;
+                        border-radius:15px;
+                        background-color:orangered;
+                        font-size:16px;
+                        font-weight:bold;
+                         &.active{
+                            background-color: #f42f3d;
+                            color:white;
+                         } 
+                    }
+                }
+            }
+            //comments end
+            
+            //user info start
+            .app-admin-doarddash-user-info-container{
+                .app-admin-doarddash-user-info-editpage{
+                    position:fixed;
+                    width:65vw;
+                    height:81vh;
+                    top:44.4%;
+                    left:50%;
+                    background-color: #323232;
+                    transform: translateX(-50%) translateY(-50%);
+                    color:white;
+                    overflow: scroll;
+                    .icon-yuanxingdacha{
+                        position:fixed;
+                        right:0px;
+                        top:-10px;
+                        color:white;
+                        font-size:50px;
+                    }
+                    .app-admin-doarddash-user-info-editpage-form{
+                        width:500px;
+                        height:100vh;
+                        margin:auto;
+                        padding:0 40px;
+                        input{
+                            color:#323232;
+                        }
+                  }
+                }
+                .app-admin-doarddash-user-info-div{
+                    width:inherit;
+                    height:inherit;
+                    display:flex;
+                    justify-content:space-between;
+                    .app-admin-doarddash-user-info-cli-container{
+                        width:50%;
+                        height:100vh;
+                        list-style: none;
+                        .app-admin-boarddash-user-info-cli{
+                            height:100px;
+                            background-color: #323232;
+                            border-bottom:1px solid #0c0c0c;
+                            border-radius:10px;
+                            line-height:40px;
+                            margin-top:2px;
+                            transition:all 0.4s;
+                            display:flex;
+                            justify-content:space-between;
+                            align-items:center;
+                            &.active{
+                                background-color: #454545;
+                                color:#fff;
+                                transition:all 0.4s;
+                            }
+                            .app-admin-boarddash-user-container{
+                                p{
+                                    color:#6b6b6b;
+                                    font-size:16px;
+                                    font-weight:bold;
+                                    height:8px;
+                                    &.active{
+                                        color:#fff;
+                                        transition:all 0.4s;
+                                    }
+                                }
+                            }
+                            .app-admin-doarddash-use-cli-btn-container{
+                                .app-admin-doarddash-use-cli-btn{
+                                    width:100px;
+                                    height:40px;
+                                    line-height:40px;
+                                    border:none;
+                                    border-radius:15px;
+                                    background-color:orangered;
+                                    font-size:16px;
+                                    font-weight:bold;
+                                     &.active{
+                                        background-color: #f42f3d;
+                                        color:white;
+                                     } 
+                                }  
+                            }
+                        }
+                    }
+                    .app-admin-doarddash-user-info-host-container{
+                        width:50%;
+                        height:100vh;
+                        list-style: none;
+                        .app-admin-boarddash-user-info-host{
+                            height:100px;
+                            background-color: #323232;
+                            border-bottom:1px solid #0c0c0c;
+                            border-radius:10px;
+                            line-height:40px;
+                            margin-top:2px;
+                            transition:all 0.4s;
+                            display:flex;
+                            justify-content:space-between;
+                            align-items:center;
+                            &.active{
+                                background-color: #454545;
+                                color:#fff;
+                                transition:all 0.4s;
+                            }
+                            .app-admin-boarddash-host-container{
+                                p{
+                                    color:#6b6b6b;
+                                    font-size:16px;
+                                    font-weight:bold;
+                                    height:8px;
+                                    &.active{
+                                        color:#fff;
+                                        transition:all 0.4s;
+                                    }
+                                }
+                            }
+                            .app-admin-doarddash-use-host-btn-container{
+                                .app-admin-doarddash-use-host-btn{
+                                    width:100px;
+                                    height:40px;
+                                    line-height:40px;
+                                    border:none;
+                                    border-radius:15px;
+                                    background-color:orangered;
+                                    font-size:16px;
+                                    font-weight:bold;
+                                     &.active{
+                                        background-color: #f42f3d;
+                                        color:white;
+                                     } 
+                                } 
+                            }
+                        }
+                    }
+                }
+            }
+            //user info end
+
+            //accommodations start
+            .app-admin-doarddash-accommodations-container{ 
+                padding:10px 10px;
+                height:100vh;
+                .app-admin-doarddash-accommodations-li{
+                    width:35vw;
+                    height:40px;
+                    background-color: #323232;
+                    border-bottom:1px solid #0c0c0c;
+                    border-radius:10px;
+                    line-height:40px;
+                    margin-top:2px;
+                    display:flex;
+                    justify-content:space-between;
+                    transition:all 0.4s;
+                    &.liActive{
+                        background-color: #454545;
+                        color:#fff;
+                        transition:all 0.4s;
+                    }
+                    .app-admin-doarddash-accommodations-name{
+                        color:#6b6b6b;
+                        font-size:16px;
+                        font-weight:bold;
+                        &.active{
+                            color:#fff;
+                        }
+                    }
+                    .app-admin-doarddash-accommodations-status{
+                        width:100px;
+                        height:40px;
+                        background-color: palegreen;
+                        text-align: center;
+                        line-height:40px;
+                        border-radius:15px;
+                        &.active{
+                            background-color:orange;
+                        }
+                    }
+                    .app-admin-doarddash-accommodations-btn{
+                        width:100px;
+                        height:40px;
+                        line-height:40px;
+                        border:none;
+                        border-radius:15px;
+                        background-color:orangered;
+                        font-size:16px;
+                        font-weight:bold;
+                         &.active{
+                            background-color: #f42f3d;
+                            color:white;
+                         }
+                    }
+                }
+            }
+            .app-admin-doarddash-accommodations-editpage{
+                position:fixed;
+                width:65vw;
+                height:81vh;
+                top:44.4%;
+                left:50%;
+                background-color: #323232;
+                transform: translateX(-50%) translateY(-50%);
+                color:white;
+                overflow: scroll;
+                .icon-yuanxingdacha{
+                    position:fixed;
+                    right:0px;
+                    top:-10px;
+                    color:white;
+                    font-size:50px;
+                }
+               .app-admin-doarddash-accommodations-editpage-form{
+                     width:500px;
+                     height:100vh;
+                     margin:auto;
+                     padding:0 40px;
+                     input{
+                         color:#323232;
+                     }
+               }
+            }
+             //accommodations end
+        }
+    }
+}

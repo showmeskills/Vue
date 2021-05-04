@@ -1,0 +1,121 @@
+/*table comments components start*/
+.table-container {
+  width: 100%;
+  height: 100%;
+  /* fade amination for comments pad start*/
+  /* fade amination for comments pad end*/
+}
+.table-container .table-wrapper {
+  margin: auto;
+  width: 1000px;
+  list-style-type: none;
+}
+.table-container .table-wrapper .table-wrapper-li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), -2px -2px 5px rgba(255, 255, 255, 0.1);
+  height: 360px;
+}
+.table-container .table-wrapper .table-wrapper-li .table-image-container {
+  margin-right: 40px;
+}
+.table-container .table-wrapper .table-wrapper-li .table-image-container img {
+  width: 450px;
+  height: 320px;
+  border-radius: 20px;
+}
+.table-container .table-wrapper .table-wrapper-li .table-introduction {
+  margin-left: 20px;
+}
+.table-container .table-wrapper .table-wrapper-li .table-introduction .table-introduction-text {
+  color: white;
+  margin-top: 10px;
+}
+.table-container .table-wrapper .table-wrapper-li .table-introduction .table-introduction-status {
+  font-size: 25px;
+  letter-spacing: 1px;
+  border: 1px solid black;
+  width: 5.53333333rem;
+  height: 1.533333rem;
+  border-radius: 10px;
+  background-color: aqua;
+  color: white;
+  font-weight: 800;
+  margin-top: 10px;
+  width: 130px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+}
+.table-container .table-wrapper .table-wrapper-li .table-introduction .table-introduction-status.active {
+  background-color: red;
+}
+.table-container .table-wrapper .table-wrapper-li .table-introduction .table-btn {
+  display: flex;
+  justify-content: space-between;
+}
+.table-container .table-wrapper .table-wrapper-li .table-introduction .table-btn .btn-comments,
+.table-container .table-wrapper .table-wrapper-li .table-introduction .table-btn .btn-bookings {
+  font-size: 1.25rem;
+  padding: 0.5em 1.5em;
+  background: #dd5555;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  float: right;
+  margin-top: 1rem;
+}
+.table-container .table-wrapper .table-wrapper-li .table-introduction .table-btn .btn-comments:hover,
+.table-container .table-wrapper .table-wrapper-li .table-introduction .table-btn .btn-bookings:hover {
+  background-color: #353b4b;
+  transition: all 1s;
+}
+.table-container .fade-enter-active,
+.table-container .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.table-container .fade-enter,
+.table-container .fade-leave-to {
+  opacity: 0;
+}
+.table-container .fade-enter-to,
+.table-container .fade-leave {
+  opacity: 1;
+}
+.table-container .table-comments-container {
+  position: fixed;
+  top: 120px;
+  left: 0px;
+  width: 450px;
+  height: 600px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), -2px -2px 5px rgba(255, 255, 255, 0.1);
+}
+.table-container .table-comments-container .icon-chahao {
+  position: absolute;
+  right: -28px;
+  top: -20px;
+  font-size: 60px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.table-container .table-comments-container ul li {
+  margin-top: 5px;
+}
+.table-container .table-comments-container ul li .table-comments-img img {
+  width: 90px;
+  height: 90px;
+}
+.table-container .table-comments-container ul li .table-comments-conntent {
+  color: white;
+  margin-left: 10px;
+}
+/*table comments components end*/

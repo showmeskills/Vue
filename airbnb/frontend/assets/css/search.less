@@ -1,0 +1,74 @@
+#app{
+    .app-search-popup-container{
+        width:1000px;
+        height:800px;
+        background-image:  linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('../image/bizhi.jpg');
+        position:fixed;
+        top: 50%;
+        left: 50%;
+        transform:translateX(-50%) translateY(-50%);
+        z-index: 4;
+        overflow: scroll;
+        border-radius: 10px;
+        .icon-yuanxingdacha{
+            position:fixed;
+            right:0px;
+            top:0px;
+            color:white;
+            font-size: 40px;
+            border:none;
+        }
+        .app-search-popup-content{
+            width:800px;
+            height:100vh;
+            margin: auto;
+            .app-search-popup-ul{
+                .app-search-popup-li{
+                    width:800px;
+                    height:150px;
+                    background-color: #323232;
+                    border-bottom:1px solid #0c0c0c;
+                    border-radius:10px;
+                    line-height:40px;
+                    margin-top:2px;
+                    display:flex;
+                    justify-content:space-around;
+                    transition:all 0.4s;
+                    align-items:center;
+                    &.activeLi{
+                        background-color: #454545;
+                        color:#fff;
+                        transition:all 0.4s;
+                    }
+                    .app-search-popup-img{
+                        img{
+                            width:130px;
+                            height:140px;
+                        }
+                    }
+                    .app-search-popup-accommo-content{
+                        .app-search-popup-accommo-content-p{
+                            color:white;
+                            line-height: 2;
+                        }
+                    }
+                    .app-search-popup-accommo-content-btn{
+                        width:100px;
+                        height:40px;
+                        line-height:40px;
+                        border:none;
+                        border-radius:15px;
+                        background-color:orangered;
+                        font-size:16px;
+                        font-weight:bold;
+                        text-align:center;
+                         &:hover{
+                            background-color: #f42f3d;
+                            color:white;
+                         }
+                    }
+                }
+            }
+        }
+    }
+}

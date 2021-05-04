@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  /*booksing start*/
+  #app {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../image/bizhi.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  #app .app-container {
+    min-height: 100vh;
+    width: 100%;
+  }
+  #app .app-container .app-booking-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), -2px -2px 5px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    width: 65vw;
+    height: 550px;
+    padding: 40px 40px;
+    display: flex;
+    justify-content: center;
+  }
+  #app .app-container .app-booking-form .app-booking-details {
+    width: 15vw;
+    height: 450px;
+    background-color: #323232;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+  #app .app-container .app-booking-form .app-booking-details p {
+    color: white;
+    text-align: left;
+    text-indent: 5px;
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.9);
+  }
+  #app .app-container .app-booking-form .app-booking-guests-details {
+    width: 50vw;
+    height: 450px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+  #app .app-container .app-booking-form .app-booking-guests-details .app-booking-guests-details-info {
+    width: 45vw;
+    height: 50px;
+    margin-top: 20px;
+  }
+  #app .app-container .app-booking-form .app-booking-guests-details .app-booking-guests-details-info span {
+    color: white;
+    font-size: 20px;
+  }
+  #app .app-container .app-booking-form .app-booking-guests-details .app-booking-guests-details-info input {
+    height: 30px;
+    border: none;
+  }
+  #app .app-container .app-booking-form .app-booking-guests-details .app-booking-guests-details-info-other {
+    width: 45vw;
+    height: 50px;
+    margin-top: 20px;
+  }
+  #app .app-container .app-booking-form .app-booking-guests-details .app-booking-guests-details-info-other span {
+    color: white;
+    font-size: 20px;
+  }
+  #app .app-container .app-booking-form .app-booking-guests-details .app-booking-guests-details-info-other input {
+    height: 30px;
+    border: none;
+  }
+  #app .app-container .app-booking-form .app-booking-guests-details .app-booking-guests-details-info-btn {
+    width: 45vw;
+    height: 50px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #app .app-container .app-booking-form .app-booking-guests-details .app-booking-guests-details-info-btn button {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    color: white;
+  }
+  #app .app-container .app-booking-form .app-booking-guests-details .app-booking-guests-details-info-btn .cancel {
+    background-color: #ccc;
+  }
+  #app .app-container .app-booking-form .app-booking-guests-details .app-booking-guests-details-info-btn .confirm {
+    background-color: #bf4848;
+  }
+  /*booksing end*/
+  

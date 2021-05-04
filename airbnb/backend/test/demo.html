@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="tss" @keydown.enter="test">
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+     
+
+       new Vue({
+           el:"#app",
+           data(){
+               return{
+                   data:[1,2,3,4,5],
+                   tss:''
+               }
+           },
+           methods:{
+            test(){
+               axios.post('./demo.php',{
+                   info:this.tss,
+               })
+               .then(res=>{
+                   console.log(res)
+               })
+            }
+           }
+       })
+    </script>
+</body>
+</html>

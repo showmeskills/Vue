@@ -1,0 +1,124 @@
+/*login form start*/
+#app {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../image/bizhi.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#app .app-container {
+  min-height: 100vh;
+  width: 100%;
+}
+#app .app-container .app-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), -2px -2px 5px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  width: 500px;
+  height: 550px;
+  padding: 40px 40px;
+}
+#app .app-container .app-form .app-login-type {
+  position: fixed;
+  border: none;
+  height: 40px;
+  width: 110px;
+  top: 10px;
+  left: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+#app .app-container .app-form .app-user-info,
+#app .app-container .app-form .app-user-pwd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+#app .app-container .app-form .app-user-info input,
+#app .app-container .app-form .app-user-pwd input {
+  border: none;
+  height: 38px;
+  width: 310px;
+  font-weight: 400;
+  margin-left: 5px;
+  padding: 0 0 0 10px;
+}
+#app .app-container .app-form .app-user-info p,
+#app .app-container .app-form .app-user-pwd p {
+  font-size: 20px;
+  color: white;
+  font-weight: 600;
+}
+#app .app-container .app-form .app-email-form-mention,
+#app .app-container .app-form .app-pwd-form-mention {
+  width: 360px;
+  height: 20px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10px;
+  font-size: 20px;
+  color: #fd454d;
+}
+#app .app-container .app-form .app-user-login .app-user-login-button {
+  font-size: 20px;
+  width: 90%;
+  height: 40px;
+  margin-top: 60px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 600;
+}
+#app .app-container .app-form .app-user-toregister {
+  margin-top: 30px;
+}
+#app .app-container .app-form .app-user-toregister p {
+  font-size: 16px;
+  color: white;
+  font-weight: 600;
+}
+#app .app-container .app-form .app-user-toregister a {
+  text-decoration: none;
+  color: orange;
+}
+#app .app-container .app-form .app-other-corporators {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+#app .app-container .app-form .app-other-corporators a {
+  text-decoration: none;
+}
+#app .app-container .app-form .app-other-corporators .iconfont {
+  border: none;
+  font-size: 50px;
+}
+#app .app-container .app-form .app-other-corporators .icon-facebook {
+  color: #4971b1;
+}
+#app .app-container .app-form .app-other-corporators .icon-google {
+  color: #329d4f;
+}
+#app .app-container .app-form .app-other-corporators .icon-github {
+  color: #5b5b5b;
+}
+#app .app-container .app-form .app-other-corporators .icon-23 {
+  color: #339dcf;
+}
+#app .app-container .app-form-mention {
+  font-size: 20px;
+  width: 100%;
+  font-weight: 700;
+  color: #ccc;
+  text-align: center;
+  margin-top: 25px;
+}
+#app .app-container .app-form-mention span {
+  color: orange;
+}
+/*login form end*/

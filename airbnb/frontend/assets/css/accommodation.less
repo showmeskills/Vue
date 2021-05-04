@@ -1,0 +1,122 @@
+/*table comments components start*/
+.table-container{
+    width:100%;
+    height:100%;
+    .table-wrapper{
+        margin:auto;
+        width:1000px;
+        list-style-type:none;
+        .table-wrapper-li{
+            position:relative;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            margin-top:20px;
+            border-radius: 10px;
+            background-color:rgba(0,0,0,.1);
+            box-shadow: 2px 2px 5px rgb(0 0 0 / 70%), -2px -2px 5px rgb(255 255 255 / 10%);
+            height: 360px;
+            .table-image-container{
+                img{
+                    width:450px;
+                    height:320px;
+                    border-radius:20px;
+                }
+                margin-right:40px;
+            }
+            .table-introduction{
+                margin-left:20px;
+                .table-introduction-text{
+                    color:white;
+                    margin-top:10px;
+                }
+                .table-introduction-status{
+                    font-size: 25px;
+                    letter-spacing: 1px;
+                    border: 1px solid black;
+                    width:5.5333333333333333rem;
+                    height:1.533333rem;
+                    text-align:center;
+                    border-radius:10px;
+                    background-color:aqua;
+                    color:white;
+                    font-weight: 800;
+                    margin-top:10px;
+                    width: 130px;
+                    height:45px;
+                    line-height: 45px;
+                    text-align:center;
+                    &.active{
+                        background-color:red;
+                    }
+                }
+                .table-btn{
+                    display:flex;
+                    justify-content:space-between;
+                    .btn-comments,.btn-bookings{
+                        font-size: 1.25rem;
+                        padding: .5em 1.5em;
+                        background: rgb(221, 85, 85);
+                        border-radius: 10px;
+                        border: none;
+                        color: white;
+                        cursor: pointer;
+                        float: right;
+                        margin-top: 1rem;
+                        &:hover{
+                            background-color: #353b4b;
+                            transition:all 1s
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /* fade amination for comments pad start*/
+    .fade-enter-active,.fade-leave-active{
+        transition:opacity .5s;
+    }
+    .fade-enter,.fade-leave-to{
+      opacity: 0;
+    }
+    .fade-enter-to,.fade-leave{
+      opacity: 1;
+    }
+    /* fade amination for comments pad end*/
+
+    .table-comments-container{
+        position:fixed;
+        top:120px;
+        left:0px;
+        width:450px;
+        height:600px;
+        border-radius:20px;
+        background-color:rgba(0,0,0,.1);
+        box-shadow: 2px 2px 5px rgb(0 0 0 / 70%), -2px -2px 5px rgb(255 255 255 / 10%);
+        .icon-chahao{
+            position:absolute;
+            right:-28px;
+            top:-20px;
+            font-size:60px;
+            border:none;
+            color:white;
+            cursor:pointer;
+        }
+        ul{
+            li{
+                margin-top:5px;
+                .table-comments-img{
+                    img{
+                        width:90px;
+                        height:90px;
+                    }
+                }
+                .table-comments-conntent{
+                    color:white;
+                    margin-left:10px;
+                }
+            }
+        }
+    }  
+}
+/*table comments components end*/

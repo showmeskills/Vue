@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- import admin css link -->
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <!-- iconfont link -->
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2518208_cwal4ctd9a.css">
+     <!-- booststrap css -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+     <!-- hint js -->
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    <title>Unibnb Management Page</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- header start -->
+        <div class="app-logo">
+            <h1>{{brand}}</h1>
+            <div class="app-avatar">
+                <i class="iconfont icon-weidenglutouxiang"></i>
+                <i class="iconfont icon-arrow_down_full" @click="isShowArrow =!isShowArrow"></i>
+                <div class="app-controller-pad" v-show=isShowArrow>
+                    <button class="app-controller-logout" :class="isActive? 'active':''" @mouseenter="isActive = true"
+                        @mouseleave="isActive = false"
+                        @click="signOut"
+                        >log out</button>
+                </div>
+                <span>{{isLoginStatus}}</span>
+            </div>
+        </div>
+        <!-- header end -->
+        <!-- contronll pad start :class="'hoverActive' :''"-->
+        <div class="app-admin-container">
+            <div class="app-admin-sider-bar">
+                <!-- sider components start-->
+                <sider-controller :handle-components="handleComponents"></sider-controller>
+                <!-- sider components end-->
+                <!-- constroll panel start -->
+                <keep-alive>
+                    <component :is="who"></component>
+                </keep-alive>
+                <!-- constroll panel end -->
+            </div>
+        </div>
+        <!-- contronll pad end -->
+    </div>
+
+
+     <!-- ajax -->
+     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <!-- https://codeseven.github.io/toastr/ -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- import ajax  -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <!-- import vue javascript framework -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- import partial components -->
+    <script src='../components/admin/AdminSiderController.js'></script>
+    <script src='../components/admin/Home.js'></script>
+    <script src='../components/admin/Booked.js'></script>
+    <script src='../components/admin/Comments.js'></script>
+    <script src='../components/admin/UserInfo.js'></script>
+    <script src='../components/admin/EmailBox.js'></script>
+    <script src='../components/admin/Accommodation.js'></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    adminName: "",
+                    brand: "Unibnb",
+                    isLoginStatus: "Welcome Adminstrator",
+                    isShowArrow: false,
+                    isActive: false,
+                    who:"ControllPanelHome",
+                    componentsList:["ControllPanelHome","ControllPanelBooked","ControllPanelComments","ControllPanelUserInfo","ControllPanelEmailBox","ControllPanelAccommodations"],
+                 
+                }
+            },
+            components: {
+                ControllPanelHome,
+                ControllPanelBooked,
+                ControllPanelComments,
+                ControllPanelUserInfo,
+                ControllPanelEmailBox,
+                ControllPanelAccommodations
+            },
+            beforeMount() {
+                if(this.getSessionStorage()){
+                    this.adminName = this.getSessionStorage();
+                }else{
+                    alert("you don\'t have an anthority to observe admin page")
+                    window.location.href="./login.html";
+                } 
+            },
+            methods:{
+                handleComponents(idx){
+                    this.who = this.componentsList[idx];
+                },
+                signOut(){
+                    const confirm = window.confirm('are you to sign out admin page?');
+                    if(confirm){
+                        window.sessionStorage.removeItem('Administrator');
+                        window.location.href="./index.html";
+                    }
+                },
+                getSessionStorage(){
+                    return window.sessionStorage.getItem('Administrator')
+                },
+            },     
+        })
+    </script>
+</body>
+
+</html>
